@@ -1,0 +1,247 @@
+DESAYUNOS---------------------------------------------------------------
+Nombre: Breakfast Melt
+Precio: $6.60
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\desayuno1.jpg
+
+Nombre: Mufin Típico
+Precio: $4.50
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\desayuno2.jpg
+
+Nombre: Burrito Típico
+Precio: $5.50
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\desayuno3.jpg
+
+Nombre: Desayuno Típico
+Precio: $6.05
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\desayuno4.jpg
+
+Nombre: Pancakes
+Precio: $4.95
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\desaNombre: Healthy Muffin
+Precio: $6.60
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\desayuno6.jpg
+
+Nombre: Croissant Salchicha y Huevo
+Precio: $6.05
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\desayuno7.jpg
+
+Nombre: BLT Croissant
+
+Precio: $6.05
+uta: NetBeansProjects\PedidosVa\src\main\resources\img\desayuno8.jpg
+
+COMBOS POLLO------------------------------------------------------------
+Nombre: Hot Honey Chicken
+Precio: $8.80
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\pollo1.jpg
+
+Nombre: Bacon Parmesa Chicken
+Precio: $9.50
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\pollo2.jpg
+
+Nombre: Classic Chicken
+Precio: $7.99
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\pollo3.jpg
+
+Nombre: Ultimate Chicken Grill
+Precio: $7.99
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\pollo4.jpg
+
+Nombre: Spicy Chicken
+Precio: $7.99
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\pollo5.jpg
+
+Nombre: Spicy Guacamole Chicken
+Precio: $9.50
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\pollo6.jpg
+
+Nombre: Nuggets 5pza
+Precio: $3.85
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\pollo7.jpg
+
+Nombre: Combo Nuggets 20pza
+Precio: $10.45
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\pollo8.jpg
+
+-----------------------------------------------------------------------
+COMBOS CARNE
+
+Nombre: Dave´s Single
+Precio: $7.75
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\carne1.jpg
+
+Nombre: Double Single 1/2 LB
+Precio: $8.90
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\carne2.jpg
+
+Nombre: Dave´s Triple 1/3 LB
+Precio: $9.99
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\carne3.jpg
+
+Nombre: La Melt
+Precio: $8.85
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\carne4.jpg
+
+Nombre: Big Bacon
+Precio: $8.85
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\carne5.jpg
+
+Nombre: Baconator Doble
+Precio: $9.90
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\carne6.jpg
+
+Nombre: Bacon Parmesan
+Precio: $8.80
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\carne7.jpg
+
+Nombre: Chilliburguer
+Precio: $7.75
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\carne8.jpg
+--------------------------------------------------------------------
+
+ENSALADAS
+Nombre: Ensalada Italian Cobb
+Precio: $9.95
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\ensalada1.jpg
+
+Nombre: Ensalada Pollo Habanero
+Precio: $9.95
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\ensalada2.jpg
+
+Nombre: Ensalada César con Pollo
+Precio: $9.95
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\ensalada3.jpg
+
+Nombre: Ensalada Chicken Fajita
+Precio: $9.95
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\ensalada4.jpg
+
+Nombre: American Salad 
+Precio: $8.80
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\ensalada5.jpg
+
+Nombre: Apple Pecan Salad
+Precio: $8.80
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\ensalada6.jpg
+
+Nombre: Wrapp Bacon Parmesan
+Precio: $7.75
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\ensalada7.jpg
+
+Nombre: Wrapp Smokey Bacon
+Precio: $7.75
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\ensalada8.jpg
+
+-----------------------------------------------------------------------
+
+INDIVIDUALES
+
+Nombre: Hamburguesa Jr
+Precio: $2.30
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\individual1.jpg
+
+Nombre: Dave´s Single Jr
+Precio: $3.95
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\individual2.jpg
+
+Nombre: Classic Chicken
+Precio: $6.99
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\individual3.jpg
+
+Nombre: Chilli Burguer
+Precio: $6.75
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\individual4.jpg
+
+Nombre: Baconator Doble
+Precio: $8.95
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\individual5.jpg
+
+Nombre: Bacon Parmesan Chicken Ind
+Precio: $8.90
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\individual6.jpg
+
+Nombre: Ultimate Chicken Drill
+Precio: $6.99
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\individual7.jpg
+
+Nombre: Bacon Parmesan
+Precio: $7.80
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\individual8.jpg
+-------------------------------------------------------------------------------
+
+BEBIDAS
+
+Nombre: Frosty Ccino Vainilla
+Precio: $3.60
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\bebida1.jpg
+
+
+Nombre: Cold Brew
+Precio: $3.40
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\bebida2.jpg
+
+
+Nombre: Limonada Fresa o WildBerry
+Precio: $2.75
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\bebida3.jpg
+
+
+Nombre: Limonada Maracuyá Fresa
+Precio: $3.25
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\bebida4.jpg
+
+
+Nombre: Té
+Precio: $1.85
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\bebida5.jpg
+
+
+Nombre: Soda Lata
+Precio: $1.65
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\bebida6.jpg
+
+
+Nombre: Botella con Agua
+Precio: $1.60
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\bebida7.jpg
+
+
+Nombre: 1/2 Litro Soda en Botella
+Precio: $2.60
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\bebida8.jpg
+-------------------------------------------------------------------------
+
+POSTRES
+
+Nombre: Pastel de Manza
+Precio: $1.65
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\postre1.jpg
+
+Nombre: Galleta Chispas de Chocolate
+Precio: $1.45
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\postre2.jpg
+
+Nombre: Cheesecake
+Precio: $3.60
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\postre3.jpg
+
+Nombre: Yogurt
+Precio: $3.25
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\postre4.jpg
+
+Nombre: Frosty de Vainilla
+Precio: $2.15
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\postre5.jpg
+
+Nombre: Frosty de Chocolate
+Precio: $2.15
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\postre6.jpg
+
+
+Nombre: Rollos de Canela
+Precio: $4.00
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\postre7.jpg
+
+Nombre: Tres Leches Familiar
+Precio: $5.75
+ruta: NetBeansProjects\PedidosVa\src\main\resources\img\postre8.jpg
