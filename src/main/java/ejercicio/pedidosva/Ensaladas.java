@@ -1,7 +1,7 @@
 
 package ejercicio.pedidosva;
 
-
+    
 public class Ensaladas implements Combo{
     private int id;
     private String nombre;
@@ -36,5 +36,9 @@ public class Ensaladas implements Combo{
     @Override
     public String getImagen() {
         return imagen;
+    }
+    @Override
+    public int getId(){
+        return id;
     }
 }

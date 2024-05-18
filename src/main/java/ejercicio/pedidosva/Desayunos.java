@@ -36,4 +36,8 @@ public class Desayunos implements Combo{
     public String getImagen() {
         return imagenRuta;
     }
+    @Override
+    public int getId(){
+        return id;
+    }
 }

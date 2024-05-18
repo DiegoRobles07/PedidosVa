@@ -10,7 +10,9 @@ import java.util.List;
 
 public class GestorCombos {
 
-  public List<Desayunos> obtenerDesayunos() {
+ 
+    
+public List<Desayunos> obtenerDesayunos() {
     List<Desayunos> desayunos = new ArrayList<>();
     Connection conexion = null;
     PreparedStatement ps = null;
@@ -63,55 +65,75 @@ public class GestorCombos {
 }
 
 
-
-public void actualizarPanelesDesayuno(FormMenuPrincipal form) {
-    List<Desayunos> desayunos = obtenerDesayunos();
-    int panelIndex = 0;
-    for (Desayunos desayuno : desayunos) {
-        if (panelIndex <= 8) {
-            form.actualizarPanelDesayuno(panelIndex, desayuno.getNombre(), desayuno.getPrecio(), desayuno.getImagen(), desayuno.getDescripcion());
-            panelIndex++;
-        } else {
-            break;
-        }
-    }
-}
-
-
-    // Método para obtener los combos de pollo desde la base de datos
-    public List<CombosPollo> obtenerCombosPollo() {
-        List<CombosPollo> combosPollo = new ArrayList<>();
-        Connection conexion = ConexionBD.establecerConexion();
-        String consulta = "SELECT * FROM CombosPollo";
-
-        try (PreparedStatement ps = conexion.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
-
-            while (rs.next()) {
-                int id = rs.getInt("id_combo_pollo");
-                String nombre = rs.getString("nombre");
-                String descripcion = rs.getString("descripcion");
-                double precio = rs.getDouble("precio");
-                String imagen = rs.getString("imagen");
-
-                CombosPollo comboPollo = new CombosPollo(id, nombre, descripcion, precio, imagen);
-                combosPollo.add(comboPollo);
+    public void actualizarPanelesDesayuno(FormMenuPrincipal form) {
+        List<Desayunos> desayunos = obtenerDesayunos();
+        int panelIndex = 0;
+        for (Desayunos desayuno : desayunos) {
+            if (panelIndex <= 8) {
+                form.actualizarPanelDesayuno(panelIndex, desayuno.getId(), desayuno.getNombre(), desayuno.getPrecio(), desayuno.getDescripcion(), desayuno.getImagen());
+                panelIndex++;
+            } else {
+                break;
             }
+        }
+    }
+public List<CombosPollo> obtenerCombosPollo() {
+    List<CombosPollo> combosPollo = new ArrayList<>();
+    Connection conexion = ConexionBD.establecerConexion();
+    String consulta = "SELECT * FROM CombosPollo";
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
-        } catch (SQLException e) {
-            System.err.println("Error al recuperar los combos de pollo: " + e.getMessage());
-        } finally {
-            ConexionBD.cerrarConexion(conexion);
+    try {
+        ps = conexion.prepareStatement(consulta);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            int id = rs.getInt("id_combo_pollo");
+            String nombre = rs.getString("nombre");
+            String descripcion = rs.getString("descripcion");
+            double precio = rs.getDouble("precio");
+            String imagen = rs.getString("imagen");
+
+            CombosPollo comboPollo = new CombosPollo(id, nombre, descripcion, precio, imagen);
+            combosPollo.add(comboPollo);
         }
 
-        return combosPollo;
+    } catch (SQLException e) {
+        System.err.println("Error al recuperar los combos de pollo: " + e.getMessage());
+    } finally {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el ResultSet: " + e.getMessage());
+            }
+        }
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el PreparedStatement: " + e.getMessage());
+            }
+        }
+        if (conexion != null) {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
     }
+
+    return combosPollo;
+}
 
 public void actualizarPanelesCombosPollo(FormMenuPrincipal form) {
     List<CombosPollo> combosPollo = obtenerCombosPollo();
-    int panelIndex = 0; // Empezamos desde 1 para que coincida con la lógica del método actualizarPanelesDesayuno
+    int panelIndex = 0;
     for (CombosPollo comboPollo : combosPollo) {
         if (panelIndex <= 8) {
-            form.actualizarPanelComboPollo(panelIndex, comboPollo.getNombre(), comboPollo.getPrecio(), comboPollo.getDescripcion(), comboPollo.getImagen());
+            form.actualizarPanelComboPollo(panelIndex, comboPollo.getId(), comboPollo.getNombre(), comboPollo.getPrecio(), comboPollo.getDescripcion(), comboPollo.getImagen());
             panelIndex++;
         } else {
             break;
@@ -119,41 +141,65 @@ public void actualizarPanelesCombosPollo(FormMenuPrincipal form) {
     }
 }
 
+// Repite el mismo patrón para las demás tablas (CombosCarne, Ensaladas, Individuales, Bebidas, Postres).
 
+public List<CombosCarne> obtenerCombosCarne() {
+    List<CombosCarne> combosCarne = new ArrayList<>();
+    Connection conexion = ConexionBD.establecerConexion();
+    String consulta = "SELECT * FROM CombosCarne";
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
-    public List<CombosCarne> obtenerCombosCarne() {
-        List<CombosCarne> combosCarne = new ArrayList<>();
-        Connection conexion = ConexionBD.establecerConexion();
-        String consulta = "SELECT * FROM CombosCarne";
+    try {
+        ps = conexion.prepareStatement(consulta);
+        rs = ps.executeQuery();
 
-        try (PreparedStatement ps = conexion.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
+        while (rs.next()) {
+            int id = rs.getInt("id_combo_carne");
+            String nombre = rs.getString("nombre");
+            String descripcion = rs.getString("descripcion");
+            double precio = rs.getDouble("precio");
+            String imagen = rs.getString("imagen");
 
-            while (rs.next()) {
-                int id = rs.getInt("id_combo_carne");
-                String nombre = rs.getString("nombre");
-                String descripcion = rs.getString("descripcion");
-                double precio = rs.getDouble("precio");
-                String imagen = rs.getString("imagen");
-
-                CombosCarne comboCarne = new CombosCarne(id, nombre, descripcion, precio, imagen);
-                combosCarne.add(comboCarne);
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Error al recuperar los combos de carne: " + e.getMessage());
-        } finally {
-            ConexionBD.cerrarConexion(conexion);
+            CombosCarne comboCarne = new CombosCarne(id, nombre, descripcion, precio, imagen);
+            combosCarne.add(comboCarne);
         }
 
-        return combosCarne;
+    } catch (SQLException e) {
+        System.err.println("Error al recuperar los combos de carne: " + e.getMessage());
+    } finally {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el ResultSet: " + e.getMessage());
+            }
+        }
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el PreparedStatement: " + e.getMessage());
+            }
+        }
+        if (conexion != null) {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
     }
 
- public void actualizarPanelesCombosCarne(FormMenuPrincipal form) {
+    return combosCarne;
+}
+
+public void actualizarPanelesCombosCarne(FormMenuPrincipal form) {
     List<CombosCarne> combosCarne = obtenerCombosCarne();
-    int panelIndex = 0; // Empezamos desde 1 para que coincida con la lógica del método actualizarPanelesDesayuno
+    int panelIndex = 0;
     for (CombosCarne comboCarne : combosCarne) {
         if (panelIndex <= 8) {
-            form.actualizarPanelComboCarne(panelIndex, comboCarne.getNombre(), comboCarne.getPrecio(), comboCarne.getDescripcion(), comboCarne.getImagen());
+            form.actualizarPanelComboCarne(panelIndex, comboCarne.getId(), comboCarne.getNombre(), comboCarne.getPrecio(), comboCarne.getDescripcion(), comboCarne.getImagen());
             panelIndex++;
         } else {
             break;
@@ -161,42 +207,63 @@ public void actualizarPanelesCombosPollo(FormMenuPrincipal form) {
     }
 }
 
+public List<Ensaladas> obtenerEnsaladas() {
+    List<Ensaladas> ensaladas = new ArrayList<>();
+    Connection conexion = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
-// Método para obtener las ensaladas desde la base de datos
+    try {
+        conexion = ConexionBD.establecerConexion();
+        String consulta = "SELECT id_ensalada, nombre, descripcion, precio, imagen FROM Ensaladas";
+        ps = conexion.prepareStatement(consulta);
+        rs = ps.executeQuery();
 
-    public List<Ensaladas> obtenerEnsaladas() {
-        List<Ensaladas> ensaladas = new ArrayList<>();
-        Connection conexion = ConexionBD.establecerConexion();
-        String consulta = "SELECT * FROM Ensaladas";
+        while (rs.next()) {
+            int id = rs.getInt("id_ensalada");
+            String nombre = rs.getString("nombre");
+            String descripcion = rs.getString("descripcion");
+            double precio = rs.getDouble("precio");
+            String imagenRuta = rs.getString("imagen");
 
-        try (PreparedStatement ps = conexion.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
-
-            while (rs.next()) {
-                int id = rs.getInt("id_ensalada");
-                String nombre = rs.getString("nombre");
-                String descripcion = rs.getString("descripcion");
-                double precio = rs.getDouble("precio");
-                String imagen = rs.getString("imagen");
-
-                Ensaladas ensalada = new Ensaladas(id, nombre, descripcion, precio, imagen);
-                ensaladas.add(ensalada);
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Error al recuperar las ensaladas: " + e.getMessage());
-        } finally {
-            ConexionBD.cerrarConexion(conexion);
+            Ensaladas ensalada = new Ensaladas(id, nombre, descripcion, precio, imagenRuta);
+            ensaladas.add(ensalada);
         }
-
-        return ensaladas;
+    } catch (SQLException e) {
+        System.err.println("Error al recuperar las ensaladas: " + e.getMessage());
+    } finally {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el ResultSet: " + e.getMessage());
+            }
+        }
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el PreparedStatement: " + e.getMessage());
+            }
+        }
+        if (conexion != null) {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
     }
 
-    public void actualizarPanelesEnsaladas(FormMenuPrincipal form) {
+    return ensaladas;
+}
+
+public void actualizarPanelesEnsaladas(FormMenuPrincipal form) {
     List<Ensaladas> ensaladas = obtenerEnsaladas();
-    int panelIndex = 0; // Empezamos desde 1 para que coincida con la lógica del método actualizarPanelesDesayuno
+    int panelIndex = 0;
     for (Ensaladas ensalada : ensaladas) {
         if (panelIndex <= 8) {
-            form.actualizarPanelEnsalada(panelIndex, ensalada.getNombre(), ensalada.getPrecio(), ensalada.getDescripcion(), ensalada.getImagen());
+            form.actualizarPanelEnsalada(panelIndex, ensalada.getId(), ensalada.getNombre(), ensalada.getPrecio(), ensalada.getDescripcion(), ensalada.getImagen());
             panelIndex++;
         } else {
             break;
@@ -204,85 +271,126 @@ public void actualizarPanelesCombosPollo(FormMenuPrincipal form) {
     }
 }
 
-    // Método para obtener los individuales desde la base de datos
+public List<Individuales> obtenerIndividuales() {
+    List<Individuales> individuales = new ArrayList<>();
+    Connection conexion = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
-    public List<Individuales> obtenerIndividuales() {
-        List<Individuales> individuales = new ArrayList<>();
-        Connection conexion = ConexionBD.establecerConexion();
-        String consulta = "SELECT * FROM Individuales";
+    try {
+        conexion = ConexionBD.establecerConexion();
+        String consulta = "SELECT id_individual, nombre, descripcion, precio, imagen FROM Individuales";
+        ps = conexion.prepareStatement(consulta);
+        rs = ps.executeQuery();
 
-        try (PreparedStatement ps = conexion.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
+        while (rs.next()) {
+            int id = rs.getInt("id_individual");
+            String nombre = rs.getString("nombre");
+            String descripcion = rs.getString("descripcion");
+            double precio = rs.getDouble("precio");
+            String imagenRuta = rs.getString("imagen");
 
-            while (rs.next()) {
-                int id = rs.getInt("id_individual");
-                String nombre = rs.getString("nombre");
-                String descripcion = rs.getString("descripcion");
-                double precio = rs.getDouble("precio");
-                String imagen = rs.getString("imagen");
-
-                Individuales individual = new Individuales(id, nombre, descripcion, precio, imagen);
-                individuales.add(individual);
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Error al recuperar los individuales: " + e.getMessage());
-        } finally {
-            ConexionBD.cerrarConexion(conexion);
+            Individuales individual = new Individuales(id, nombre, descripcion, precio, imagenRuta);
+            individuales.add(individual);
         }
-
-        return individuales;
+    } catch (SQLException e) {
+        System.err.println("Error al recuperar los individuales: " + e.getMessage());
+    } finally {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el ResultSet: " + e.getMessage());
+            }
+        }
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el PreparedStatement: " + e.getMessage());
+            }
+        }
+        if (conexion != null) {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
     }
 
-// Método para actualizar los paneles de individuales en el formulario principal
+    return individuales;
+}
+
 public void actualizarPanelesIndividuales(FormMenuPrincipal form) {
     List<Individuales> individuales = obtenerIndividuales();
-    int panelIndex = 0; // Empezamos desde 1 para que coincida con la lógica del método actualizarPanelesDesayuno
+    int panelIndex = 0;
     for (Individuales individual : individuales) {
         if (panelIndex <= 8) {
-            form.actualizarPanelIndividual(panelIndex, individual.getNombre(), individual.getPrecio(), individual.getImagen(), individual.getDescripcion());
+            form.actualizarPanelIndividual(panelIndex, individual.getId(), individual.getNombre(), individual.getPrecio(), individual.getImagen(), individual.getDescripcion());
             panelIndex++;
         } else {
             break;
         }
     }
 }
+public List<Bebidas> obtenerBebidas() {
+    List<Bebidas> bebidas = new ArrayList<>();
+    Connection conexion = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
- // Método para obtener las bebidas desde la base de datos
-    public List<Bebidas> obtenerBebidas() {
-        List<Bebidas> bebidas = new ArrayList<>();
-        Connection conexion = ConexionBD.establecerConexion();
-        String consulta = "SELECT * FROM Bebidas";
+    try {
+        conexion = ConexionBD.establecerConexion();
+        String consulta = "SELECT id_bebida, nombre, descripcion, precio, imagen FROM Bebidas";
+        ps = conexion.prepareStatement(consulta);
+        rs = ps.executeQuery();
 
-        try (PreparedStatement ps = conexion.prepareStatement(consulta);
-             ResultSet rs = ps.executeQuery()) {
+        while (rs.next()) {
+            int id = rs.getInt("id_bebida");
+            String nombre = rs.getString("nombre");
+            String descripcion = rs.getString("descripcion");
+            double precio = rs.getDouble("precio");
+            String imagenRuta = rs.getString("imagen");
 
-            while (rs.next()) {
-                int id = rs.getInt("id_bebida");
-                String nombre = rs.getString("nombre");
-                String descripcion = rs.getString("descripcion");
-                double precio = rs.getDouble("precio");
-                String imagen = rs.getString("imagen");
-
-                Bebidas bebida = new Bebidas(id, nombre, descripcion, precio, imagen);
-                bebidas.add(bebida);
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Error al recuperar las bebidas: " + e.getMessage());
-        } finally {
-            ConexionBD.cerrarConexion(conexion);
+            Bebidas bebida = new Bebidas(id, nombre, descripcion, precio, imagenRuta);
+            bebidas.add(bebida);
         }
-
-        return bebidas;
+    } catch (SQLException e) {
+        System.err.println("Error al recuperar las bebidas: " + e.getMessage());
+    } finally {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el ResultSet: " + e.getMessage());
+            }
+        }
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el PreparedStatement: " + e.getMessage());
+            }
+        }
+        if (conexion != null) {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
     }
 
-// Método para actualizar los paneles de bebidas en el formulario principal
+    return bebidas;
+}
+
 public void actualizarPanelesBebidas(FormMenuPrincipal form) {
     List<Bebidas> bebidas = obtenerBebidas();
-    int panelIndex = 0; // Empezamos desde 1 para que coincida con la lógica del método actualizarPanelesDesayuno
+    int panelIndex = 0;
     for (Bebidas bebida : bebidas) {
         if (panelIndex <= 8) {
-            form.actualizarPanelBebida(panelIndex, bebida.getNombre(), bebida.getPrecio(), bebida.getDescripcion(), bebida.getImagen());
+            form.actualizarPanelBebida(panelIndex, bebida.getId(), bebida.getNombre(), bebida.getPrecio(), bebida.getDescripcion(), bebida.getImagen());
             panelIndex++;
         } else {
             break;
@@ -290,48 +398,68 @@ public void actualizarPanelesBebidas(FormMenuPrincipal form) {
     }
 }
 
-
-
-    public List<Postres> obtenerPostres() {
+public List<Postres> obtenerPostres() {
     List<Postres> postres = new ArrayList<>();
-    Connection conexion = ConexionBD.establecerConexion();
-    String consulta = "SELECT * FROM Postres";
+    Connection conexion = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
-    try (PreparedStatement ps = conexion.prepareStatement(consulta);
-         ResultSet rs = ps.executeQuery()) {
+    try {
+        conexion = ConexionBD.establecerConexion();
+        String consulta = "SELECT id_postre, nombre, descripcion, precio, imagen FROM Postres";
+        ps = conexion.prepareStatement(consulta);
+        rs = ps.executeQuery();
 
         while (rs.next()) {
             int id = rs.getInt("id_postre");
             String nombre = rs.getString("nombre");
             String descripcion = rs.getString("descripcion");
             double precio = rs.getDouble("precio");
-            String imagen = rs.getString("imagen");
+            String imagenRuta = rs.getString("imagen");
 
-            Postres postre = new Postres(id, nombre, descripcion, precio, imagen);
+            Postres postre = new Postres(id, nombre, descripcion, precio, imagenRuta);
             postres.add(postre);
         }
-
     } catch (SQLException e) {
         System.err.println("Error al recuperar los postres: " + e.getMessage());
     } finally {
-        ConexionBD.cerrarConexion(conexion);
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el ResultSet: " + e.getMessage());
+            }
+        }
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el PreparedStatement: " + e.getMessage());
+            }
+        }
+        if (conexion != null) {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
     }
 
     return postres;
 }
+
 public void actualizarPanelesPostres(FormMenuPrincipal form) {
     List<Postres> postres = obtenerPostres();
-    int panelIndex = 0; // Empezamos desde 1 para que coincida con la lógica del método actualizarPanelesDesayuno
+    int panelIndex = 0;
     for (Postres postre : postres) {
         if (panelIndex <= 8) {
-            form.actualizarPanelPostre(panelIndex, postre.getNombre(), postre.getPrecio(), postre.getDescripcion(), postre.getImagen());
+            form.actualizarPanelPostre(panelIndex, postre.getId(), postre.getNombre(), postre.getPrecio(), postre.getDescripcion(), postre.getImagen());
             panelIndex++;
         } else {
             break;
         }
     }
 }
-
-
 
 }

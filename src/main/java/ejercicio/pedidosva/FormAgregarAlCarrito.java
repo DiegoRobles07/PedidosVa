@@ -1,39 +1,89 @@
 package ejercicio.pedidosva;
-
+import ejercicio.pedidosva.Producto;
+import ejercicio.pedidosva.GestorPedidos;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class FormAgregarAlCarrito extends javax.swing.JFrame {
 
+    private String descripcion;
+    private String imagenPath;
     private FormMenuPrincipal formMenuPrincipal;
     private Carrito carrito;
     private int cantidadCombo = 1;
+    private String categoriaSeleccionada;
 
-    public void actualizarCombo(String nombre, double precio, String descripcion, String imagenPath) {
-        lblNombreCombo.setText(nombre);
-        lblDescripcionCombo.setText(descripcion); // Actualiza la descripción
-        lblPrecioCombo.setText("$" + precio); // Actualiza el precio
+    public int getCantidadCombo() {
+        return cantidadCombo;
+    }
 
-        // Intentar cargar la imagen
-        try {
-            File imagenFile = new File(imagenPath);
-            if (imagenFile.exists()) {
-                Image imagen = ImageIO.read(imagenFile);
-                ImageIcon icon = new ImageIcon(imagen);
+    public FormAgregarAlCarrito(FormMenuPrincipal formMenuPrincipal, Carrito carrito, String categoriaSeleccionada) {
+        this.formMenuPrincipal = formMenuPrincipal;
+        this.carrito = carrito;
+        System.out.println("Carrito recibido en FormAgregarAlCarrito: " + carrito);
+
+        this.categoriaSeleccionada = categoriaSeleccionada;
+        this.setUndecorated(true); // Establecer undecorated a true
+        initComponents();
+
+    }
+
+    public Carrito getCarrito() {
+        return this.carrito;
+    }
+
+    public int obtenerIdClienteActual() {
+        // Aquí deberías implementar la lógica para obtener el ID del cliente actual
+        // Por ejemplo, podrías tener una variable de instancia que almacene el ID del cliente actual
+        // y devolver su valor aquí.
+        int idClienteActual = 1; // ID de cliente predeterminado
+        return idClienteActual; // Suponiendo que idClienteActual es la variable que contiene el ID del cliente actual
+    }
+
+  public void actualizarCombo(int id, String nombre, double precio, String descripcion, String imagenPath) {
+    this.descripcion = descripcion;
+    this.imagenPath = imagenPath;
+    lblNombreCombo.setText(nombre);
+    lblDescripcionCombo.setText(descripcion); // Actualiza la descripción
+    
+    // Formatear el precio con dos decimales
+    DecimalFormat formatoPrecio = new DecimalFormat("#0.00");
+    String precioFormateado = formatoPrecio.format(precio);
+    lblPrecioCombo.setText("$" + precioFormateado); // Actualiza el precio
+    
+    id_Combo.setText(Integer.toString(id)); // Actualiza el ID del combo
+
+    // Intentar cargar la imagen
+    try {
+        File imagenFile = new File(imagenPath);
+        if (imagenFile.exists()) {
+            BufferedImage imagen = ImageIO.read(imagenFile);
+            if (imagen != null) {
+                // Escalar la imagen para que se ajuste al tamaño del JLabel
+                ImageIcon icon = new ImageIcon(imagen.getScaledInstance(lblImagenCombo.getWidth(), lblImagenCombo.getHeight(), Image.SCALE_SMOOTH));
                 lblImagenCombo.setIcon(icon);
             } else {
-                // Mostrar un mensaje de error si la imagen no se encuentra
-                lblImagenCombo.setText("Imagen no encontrada");
+                // Mostrar un mensaje de error si la imagen no se pudo cargar
+                System.err.println("Error al cargar la imagen del combo");
             }
-        } catch (IOException e) {
-            // Capturar y manejar cualquier excepción de E/S
-            e.printStackTrace();
-            lblImagenCombo.setText("Error al cargar la imagen");
+        } else {
+            // Mostrar un mensaje de error si la imagen no se encuentra
+            System.err.println("Imagen no encontrada para el combo");
         }
+    } catch (IOException e) {
+        // Capturar y manejar cualquier excepción de E/S
+        e.printStackTrace();
+        System.err.println("Error al cargar la imagen del combo");
     }
+}
+
 
     // Método para incrementar la cantidad del combo
     private void incrementarCantidad() {
@@ -49,17 +99,9 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
         }
     }
 
-    public FormAgregarAlCarrito(FormMenuPrincipal formMenuPrincipal, Carrito carrito) {
-        this.formMenuPrincipal = formMenuPrincipal;
-        this.carrito = carrito;
-        
-        this.setUndecorated(true); // Establecer undecorated a true
-        initComponents();
-        
-    }
-
     public void setFormMenuPrincipal(FormMenuPrincipal formMenuPrincipal, Carrito carrito) {
         this.formMenuPrincipal = formMenuPrincipal;
+        this.carrito = carrito;
         this.setLocationRelativeTo(null); // Centrar en la pantalla
     }
 
@@ -76,13 +118,14 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lblDescripcionCombo = new javax.swing.JLabel();
         lblImagenCombo = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnAgregarAlCarrito = new javax.swing.JButton();
         btnIncrementar = new javax.swing.JButton();
         btnDecrementar = new javax.swing.JButton();
         lblCantidad = new javax.swing.JLabel();
         lblNombreCombo = new javax.swing.JLabel();
         lblPrecioCombo = new javax.swing.JLabel();
         btnRegresarMenuPrincipal = new javax.swing.JButton();
+        id_Combo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -102,16 +145,24 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
 
         lblImagenCombo.setForeground(new java.awt.Color(0, 0, 0));
         lblImagenCombo.setText("imagen Combo");
+        lblImagenCombo.setToolTipText("Imagen combo");
         jPanel2.add(lblImagenCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 250, 140));
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 255));
-        jButton1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        jButton1.setText("Agregar a pedido");
-        jButton1.setFocusable(false);
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 150, 70));
+        btnAgregarAlCarrito.setBackground(new java.awt.Color(51, 51, 255));
+        btnAgregarAlCarrito.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        btnAgregarAlCarrito.setText("Agregar a pedido");
+        btnAgregarAlCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregarAlCarrito.setFocusable(false);
+        btnAgregarAlCarrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarAlCarritoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAgregarAlCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 150, 70));
 
         btnIncrementar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnIncrementar.setText("+");
+        btnIncrementar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIncrementar.setFocusable(false);
         btnIncrementar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +173,7 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
 
         btnDecrementar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnDecrementar.setText("-");
+        btnDecrementar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDecrementar.setFocusable(false);
         btnDecrementar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +185,7 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
         lblCantidad.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblCantidad.setForeground(new java.awt.Color(0, 0, 0));
         lblCantidad.setText("1");
-        jPanel2.add(lblCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 20, -1));
+        jPanel2.add(lblCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 40, -1));
 
         lblNombreCombo.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         lblNombreCombo.setForeground(new java.awt.Color(0, 0, 0));
@@ -159,7 +211,10 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
                 btnRegresarMenuPrincipalActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegresarMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 140, 50));
+        jPanel1.add(btnRegresarMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 140, 30));
+
+        id_Combo.setText("id");
+        jPanel1.add(id_Combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 420));
 
@@ -175,20 +230,55 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDecrementarActionPerformed
 
     private void btnRegresarMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarMenuPrincipalActionPerformed
-        
 
         // Volver a activar el formulario principal
         formMenuPrincipal.setEnabled(true);
-    // Cerrar el formulario actual
+        // Cerrar el formulario actual
         this.dispose();
     }//GEN-LAST:event_btnRegresarMenuPrincipalActionPerformed
 
+    private void btnAgregarAlCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAlCarritoActionPerformed
+     // Obtener los detalles del combo desde la interfaz gráfica
+    int id = Integer.parseInt(id_Combo.getText());
+    String nombre = lblNombreCombo.getText();
+    double precio = Double.parseDouble(lblPrecioCombo.getText().replace("$", ""));
+    int cantidad = Integer.parseInt(lblCantidad.getText());
+
+    // Agregar mensajes de depuración para verificar los valores obtenidos
+    System.out.println("Detalles del combo:");
+    System.out.println("ID: " + id);
+    System.out.println("Nombre: " + nombre);
+    System.out.println("Precio: " + precio);
+    System.out.println("Cantidad: " + cantidad);
+
+    // Crear un objeto Producto correspondiente al combo seleccionado
+    Producto producto = new Producto(id, nombre, cantidad, precio);
+
+    // Agregar el producto al carrito
+    carrito.agregarProducto(producto);
+
+    // Mostrar mensaje de éxito
+    JOptionPane.showMessageDialog(this, "Producto agregado al carrito");
+
+    // Cerrar la ventana de agregar al carrito
+    this.dispose();
+
+    // Mostrar el formulario principal
+    formMenuPrincipal.setEnabled(true);
+    formMenuPrincipal.setVisible(true);
+
+    // Agregar mensajes de depuración para verificar si el producto se agregó correctamente al carrito
+    System.out.println("Producto agregado al carrito correctamente: " + producto.getNombre());
+    System.out.println("Cantidad de productos en el carrito: " + carrito.getProductos().size());
+    }//GEN-LAST:event_btnAgregarAlCarritoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarAlCarrito;
     private javax.swing.JButton btnDecrementar;
     private javax.swing.JButton btnIncrementar;
     private javax.swing.JButton btnRegresarMenuPrincipal;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel id_Combo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCantidad;

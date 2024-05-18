@@ -42,6 +42,10 @@ public class ConexionBD {
         }
         
     }
+
+    static Connection obtenerConexion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
 /*Autor Diego Rene Robles Estrada RE100123
 PRUEBA PARCIAL 3 PROGRAMACION ORIENTADA A OBJETOS

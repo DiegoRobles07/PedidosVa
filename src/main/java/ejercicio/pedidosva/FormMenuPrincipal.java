@@ -17,38 +17,14 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class FormMenuPrincipal extends javax.swing.JFrame {
+public class FormMenuPrincipal extends javax.swing.JFrame implements SessionObserver {
 
     String categoriaSeleccionada;
     private FormAgregarAlCarrito formAgregarAlCarrito;
     private Carrito carrito;
-
-    // Métodos para establecer y quitar el borde rojo de un panel y su panel hijo
-    public void setRedBorder(JPanel panel, JPanel childPanel) {
-        panel.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-        if (childPanel != null) {
-            childPanel.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        }
-    }
-
-    public void removeRedBorder(JPanel panel, JPanel childPanel) {
-        panel.setBorder(BorderFactory.createEmptyBorder());
-        if (childPanel != null) {
-            childPanel.setBorder(BorderFactory.createEmptyBorder());
-        }
-    }
-    // Eventos para el mouseEntered de los paneles
-
-    private void pnlComboMouseEntered(java.awt.event.MouseEvent evt, JPanel panel, JPanel childPanel) {
-        setRedBorder(panel, childPanel);
-    }
-
-    // Eventos para el mouseExited de los paneles
-    private void pnlComboMouseExited(java.awt.event.MouseEvent evt, JPanel panel, JPanel childPanel) {
-        removeRedBorder(panel, childPanel);
-    }
     List<Desayunos> desayunos;
     // Definición de las listas como variables de instancia
     private List<JPanel> panelesDesayuno;
@@ -56,21 +32,26 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
     private List<JLabel> lblPrecioDesayuno;
     public List<JLabel> lblImagenDesayuno;
     private List<JLabel> lblDescripcionDesayuno;
-// Obtener los desayunos y asignarlos a la lista
+    private List<JLabel> lblIdDesayuno;
+    private InicioDeSesion inicioSesion;
 
-    public FormMenuPrincipal(FormAgregarAlCarrito formAgregarAlCarrito) {
+    public FormMenuPrincipal(FormAgregarAlCarrito formAgregarAlCarrito, Carrito carrito, String categoriaSeleccionada, InicioDeSesion inicioSesion) {
         this.setUndecorated(true);
-        this.formAgregarAlCarrito = formAgregarAlCarrito;
+        this.formAgregarAlCarrito = new FormAgregarAlCarrito(this, new Carrito(), categoriaSeleccionada);
         this.carrito = carrito;
+        this.inicioSesion = inicioSesion;
         initComponents();
         this.setExtendedState(this.MAXIMIZED_BOTH);
         ConexionBD.establecerConexion();
-
+        lblNombreUsuario.setVisible(false);
+        
+        System.out.println("FormMenuPrincipal: Instancia de InicioDeSesion recibida correctamente.");
         panelesDesayuno = new ArrayList<>();
         lblNombreDesayuno = new ArrayList<>();
         lblPrecioDesayuno = new ArrayList<>();
         lblImagenDesayuno = new ArrayList<>();
         lblDescripcionDesayuno = new ArrayList<>();
+        lblIdDesayuno = new ArrayList<>();
 
         panelesDesayuno.add(pnlCombo1);
         panelesDesayuno.add(pnlCombo2);
@@ -117,6 +98,15 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         lblNombreDesayuno.add(lblNombreCombo7);
         lblNombreDesayuno.add(lblNombreCombo8);
 
+        lblIdDesayuno.add(lbl_IdCombo1);
+        lblIdDesayuno.add(lbl_IdCombo2);
+        lblIdDesayuno.add(lbl_IdCombo3);
+        lblIdDesayuno.add(lbl_IdCombo4);
+        lblIdDesayuno.add(lbl_IdCombo5);
+        lblIdDesayuno.add(lbl_IdCombo6);
+        lblIdDesayuno.add(lbl_IdCombo7);
+        lblIdDesayuno.add(lbl_IdCombo8);
+
         // Agregar impresiones de depuración aquí
         System.out.println("Tamaño de panelesDesayuno: " + panelesDesayuno.size());
         System.out.println("Tamaño de lblNombreDesayuno: " + lblNombreDesayuno.size());
@@ -126,49 +116,135 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         cargarDesayunos();
     }
 
+    private InicioDeSesion obtenerInicioDeSesion() {
+        // Aquí devolvemos la instancia global de InicioDeSesion si está disponible
+        return this.inicioSesion;
+    }
+    
+     // Método para actualizar el estado de la sesión en el menú principal
+    public void actualizarEstadoSesion(boolean sesionIniciada) {
+        if (sesionIniciada) {
+            // Si la sesión está iniciada, habilitar elementos relacionados con la sesión
+            btnInicioSesion.setEnabled(false);
+            // Otros elementos que desees habilitar
+        } else {
+            // Si la sesión no está iniciada, habilitar elementos relacionados con el inicio de sesión
+            btnInicioSesion.setEnabled(true);
+            // Otros elementos que desees deshabilitar
+        }
+    }
+    private void limpiarInterfaz(){
+        lblNombreUsuario.setText("User");
+    }
+    @Override
+    public void onSesionCerrada() {
+        // Aquí defines lo que deseas que ocurra cuando la sesión se cierre
+        // Por ejemplo, podrías limpiar la interfaz o realizar otras acciones necesarias
+        // También puedes agregar mensajes de depuración si lo deseas
+        System.out.println("Sesión cerrada. Realizando acciones necesarias...");
+        
+        // Por ejemplo, podrías limpiar la interfaz o realizar otras acciones necesarias
+        // Ejemplo:
+        limpiarInterfaz();
+    }
+    
+    @Override
+    public void onSesionIniciada(int idUsuario) {
+        // Aquí defines lo que deseas que ocurra cuando la sesión se inicie
+        // Por ejemplo, podrías actualizar la interfaz o realizar otras acciones necesarias
+        // También puedes agregar mensajes de depuración si lo deseas
+        System.out.println("Sesión iniciada para el usuario con ID: " + idUsuario);
+        
+    }
+// Método para actualizar el estado de la sesión en el menú principal
+    /*
+public void confirmarPedido() {
+  System.out.println("Confirmar pedido llamado"); // Verificar si se llama al método
+    List<Producto> productosSeleccionados = formAgregarAlCarrito.getCarrito().getProductos(); // Obtener los productos seleccionados
+    System.out.println("Número de productos seleccionados: " + productosSeleccionados.size()); // Verificar el tamaño de la lista
+    // Obtener el último idPedido
+    int idPedido = GestorPedidos.obtenerUltimoIdPedido();
+    System.out.println("Último ID de pedido: " + idPedido); // Verificar el ID del pedido
+    for (Producto producto : productosSeleccionados) { // Iterar sobre los productos seleccionados
+        int cantidad = producto.getCantidad(); // Obtener la cantidad seleccionada del producto
+        // Modificar para llamar a guardarProducto en lugar de guardarCombo
+        GestorPedidos.guardarProducto(idPedido, producto, cantidad); // Guardar el producto con la cantidad en la base de datos
+    }
+
+    JOptionPane.showMessageDialog(this, "Pedido confirmado con éxito");
+}
+     */
+    public javax.swing.JLabel getlblNombreUsuario() {
+        return lblNombreUsuario;
+    }
+
+    private String obtenerFechaActual() {
+        java.util.Date fecha = new java.util.Date();
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(fecha);
+    }
+
+    // Métodos para establecer y quitar el borde rojo de un panel y su panel hijo
+    public void setRedBorder(JPanel panel, JPanel childPanel) {
+        panel.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+        if (childPanel != null) {
+            childPanel.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        }
+    }
+
+    public void removeRedBorder(JPanel panel, JPanel childPanel) {
+        panel.setBorder(BorderFactory.createEmptyBorder());
+        if (childPanel != null) {
+            childPanel.setBorder(BorderFactory.createEmptyBorder());
+        }
+    }
+    // Eventos para el mouseEntered de los paneles
+
+    private void pnlComboMouseEntered(java.awt.event.MouseEvent evt, JPanel panel, JPanel childPanel) {
+        setRedBorder(panel, childPanel);
+    }
+
+    // Eventos para el mouseExited de los paneles
+    private void pnlComboMouseExited(java.awt.event.MouseEvent evt, JPanel panel, JPanel childPanel) {
+        removeRedBorder(panel, childPanel);
+    }
+
     private void cargarDesayunos() {
         GestorCombos gestorCombos = new GestorCombos();
         List<Desayunos> desayunos = gestorCombos.obtenerDesayunos();
 
         if (!desayunos.isEmpty()) {
-            // Verifica si el tamaño de las listas de etiquetas es mayor o igual al tamaño de la lista de desayunos
-            if (lblNombreDesayuno.size() >= desayunos.size()
-                    && lblPrecioDesayuno.size() >= desayunos.size()
-                    && lblImagenDesayuno.size() >= desayunos.size()
-                    && lblDescripcionDesayuno.size() >= desayunos.size()) { // Asegurar que la lista de descripciones tenga el mismo tamaño
+            // Verificar si el tamaño de las listas de etiquetas coincide con el tamaño de la lista de desayunos
+            if (lblNombreDesayuno.size() == desayunos.size()
+                    && lblPrecioDesayuno.size() == desayunos.size()
+                    && lblImagenDesayuno.size() == desayunos.size()
+                    && lblDescripcionDesayuno.size() == desayunos.size()
+                    && lblIdDesayuno.size() == desayunos.size()) {
 
-                // Itera sobre la lista de desayunos
+                // Iterar sobre la lista de desayunos
                 for (int i = 0; i < desayunos.size(); i++) {
                     Desayunos desayuno = desayunos.get(i);
 
-                    // Verifica si el índice actual es menor que el tamaño de las listas de etiquetas
-                    if (i < lblNombreDesayuno.size() && i < lblPrecioDesayuno.size() && i < lblImagenDesayuno.size() && i < lblDescripcionDesayuno.size()) {
-                        lblNombreDesayuno.get(i).setText(desayuno.getNombre());
-                        lblPrecioDesayuno.get(i).setText(String.format("%.2f", desayuno.getPrecio()));
-
-                        // Establecer la descripción del desayuno
-                        lblDescripcionDesayuno.get(i).setText(desayuno.getDescripcion());
-
-                        // Cargar la imagen desde la ruta almacenada en el objeto Desayuno
-                        String rutaImagen = desayuno.getImagen();
-                        if (rutaImagen != null && !rutaImagen.isEmpty()) {
-                            ImageIcon icon = new ImageIcon(rutaImagen);
-                            lblImagenDesayuno.get(i).setIcon(icon);
-                        } else {
-                            System.err.println("La ruta de la imagen para el desayuno " + desayuno.getNombre() + " está vacía.");
-                        }
+                    // Verificar si el índice está dentro del rango de las listas de etiquetas
+                    if (i < lblNombreDesayuno.size() && i < lblPrecioDesayuno.size() && i < lblImagenDesayuno.size() && i < lblDescripcionDesayuno.size() && i < lblIdDesayuno.size()) {
+                        actualizarPanelDesayuno(i, desayuno.getId(), desayuno.getNombre(), desayuno.getPrecio(), desayuno.getImagen(), desayuno.getDescripcion());
                     } else {
+                        // El índice está fuera del rango de las listas de etiquetas
                         System.err.println("El índice excede el tamaño de las listas de etiquetas.");
-                        break; // Termina el bucle para evitar más iteraciones innecesarias
+                        break; // Terminar el bucle para evitar más iteraciones innecesarias
                     }
                 }
             } else {
+                // Las listas de etiquetas no tienen el mismo tamaño que la lista de desayunos
                 System.err.println("El tamaño de las listas de etiquetas no coincide con el tamaño de la lista de desayunos.");
             }
+        } else {
+            // La lista de desayunos está vacía
+            System.err.println("La lista de desayunos está vacía.");
         }
     }
 
-    public void actualizarPanelDesayuno(int index, String nombre, double precio, String imagenRuta, String descripcion) {
+    public void actualizarPanelDesayuno(int index, int id, String nombre, double precio, String imagenRuta, String descripcion) {
         if (index < 0 || index >= lblImagenDesayuno.size()) {
             System.err.println("Índice de panel de desayuno inválido: " + index);
             return;
@@ -176,10 +252,11 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
 
         JLabel lblImagen = lblImagenDesayuno.get(index);
 
-        // Actualiza el nombre, precio y descripción del desayuno
+        // Actualiza el nombre, precio, descripción y ID del desayuno
         lblNombreDesayuno.get(index).setText(nombre);
         lblPrecioDesayuno.get(index).setText(String.format("%.2f", precio));
         lblDescripcionDesayuno.get(index).setText(descripcion);
+        lblIdDesayuno.get(index).setText(Integer.toString(id)); // Guardar el ID del desayuno en un JLabel oculto (opcional)
 
         // Carga la imagen desde la ruta almacenada en la base de datos
         if (imagenRuta != null && !imagenRuta.isEmpty()) {
@@ -190,8 +267,7 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         }
     }
 
-    // Método para actualizar un panel de combo de pollo específico con nombre, precio e imagen
-    public void actualizarPanelComboPollo(int index, String nombre, double precio, String descripcion, String imagenRuta) {
+    public void actualizarPanelComboPollo(int index, int id, String nombre, double precio, String descripcion, String imagenRuta) {
         if (index < 0 || index >= lblImagenDesayuno.size()) {
             System.err.println("Índice de panel de combo de pollo inválido: " + index);
             return;
@@ -199,10 +275,11 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
 
         JLabel lblImagen = lblImagenDesayuno.get(index);
 
-        // Actualiza el nombre, precio y descripción del combo de pollo
+        // Actualiza el nombre, precio, descripción y ID del combo de pollo
         lblNombreDesayuno.get(index).setText(nombre);
         lblPrecioDesayuno.get(index).setText(String.format("%.2f", precio));
         lblDescripcionDesayuno.get(index).setText(descripcion);
+        lblIdDesayuno.get(index).setText(Integer.toString(id)); // Guardar el ID del combo de pollo en un JLabel oculto (opcional)
 
         // Carga la imagen desde la ruta almacenada en la base de datos
         if (imagenRuta != null && !imagenRuta.isEmpty()) {
@@ -213,8 +290,8 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         }
     }
 
-// Método para actualizar un panel de combo de carne específico con nombre, precio e imagen
-    public void actualizarPanelComboCarne(int index, String nombre, double precio, String descripcion, String imagenRuta) {
+// Repite este patrón para los demás métodos actualizarPanelXxx
+    public void actualizarPanelComboCarne(int index, int id, String nombre, double precio, String descripcion, String imagenRuta) {
         if (index < 0 || index >= lblImagenDesayuno.size()) {
             System.err.println("Índice de panel de combo de carne inválido: " + index);
             return;
@@ -222,12 +299,11 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
 
         JLabel lblImagen = lblImagenDesayuno.get(index);
 
-        // Actualiza el nombre y precio del combo de carne
+        // Actualiza el nombre, precio, descripción y ID del combo de carne
         lblNombreDesayuno.get(index).setText(nombre);
         lblPrecioDesayuno.get(index).setText(String.format("%.2f", precio));
-
-        // Establece la descripción del combo de carne
         lblDescripcionDesayuno.get(index).setText(descripcion);
+        lblIdDesayuno.get(index).setText(Integer.toString(id)); // Guardar el ID del combo de carne en un JLabel oculto (opcional)
 
         // Carga la imagen desde la ruta almacenada en la base de datos
         if (imagenRuta != null && !imagenRuta.isEmpty()) {
@@ -235,6 +311,100 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
             lblImagen.setIcon(icon);
         } else {
             System.err.println("La ruta de la imagen para el combo de carne en el panel " + index + " está vacía.");
+        }
+    }
+
+    public void actualizarPanelEnsalada(int index, int id, String nombre, double precio, String descripcion, String imagenRuta) {
+        if (index < 0 || index >= lblImagenDesayuno.size()) {
+            System.err.println("Índice de panel de ensalada inválido: " + index);
+            return;
+        }
+
+        JLabel lblImagen = lblImagenDesayuno.get(index);
+
+        // Actualiza el nombre, precio, descripción y ID de la ensalada
+        lblNombreDesayuno.get(index).setText(nombre);
+        lblPrecioDesayuno.get(index).setText(String.format("%.2f", precio));
+        lblDescripcionDesayuno.get(index).setText(descripcion);
+        lblIdDesayuno.get(index).setText(Integer.toString(id)); // Guardar el ID de la ensalada en un JLabel oculto (opcional)
+
+        // Carga la imagen desde la ruta almacenada en la base de datos
+        if (imagenRuta != null && !imagenRuta.isEmpty()) {
+            ImageIcon icon = new ImageIcon(imagenRuta);
+            lblImagen.setIcon(icon);
+        } else {
+            System.err.println("La ruta de la imagen para la ensalada en el panel " + index + " está vacía.");
+        }
+    }
+
+    public void actualizarPanelIndividual(int index, int id, String nombre, double precio, String imagenRuta, String descripcion) {
+        if (index < 0 || index >= lblImagenDesayuno.size()) {
+            System.err.println("Índice de panel de individual inválido: " + index);
+            return;
+        }
+
+        JLabel lblImagen = lblImagenDesayuno.get(index);
+
+        // Actualiza el nombre, precio, descripción e ID del individual
+        lblNombreDesayuno.get(index).setText(nombre);
+        lblPrecioDesayuno.get(index).setText(String.format("%.2f", precio));
+        lblDescripcionDesayuno.get(index).setText(descripcion);
+        lblIdDesayuno.get(index).setText(Integer.toString(id)); // Guardar el ID del individual en un JLabel oculto (opcional)
+
+        // Carga la imagen desde la ruta almacenada en el objeto Individual
+        if (imagenRuta != null && !imagenRuta.isEmpty()) {
+            ImageIcon icon = new ImageIcon(imagenRuta);
+            lblImagen.setIcon(icon);
+        } else {
+            System.err.println("La ruta de la imagen para el individual en el panel " + index + " está vacía.");
+        }
+    }
+// Método para actualizar un panel de bebida específico con nombre, precio, imagen, descripción e ID
+
+    public void actualizarPanelBebida(int index, int id, String nombre, double precio, String descripcion, String imagenRuta) {
+        if (index < 0 || index >= lblNombreDesayuno.size()) {
+            System.err.println("Índice de panel de bebida inválido: " + index);
+            return;
+        }
+
+        JLabel lblImagen = lblImagenDesayuno.get(index);
+
+        // Actualiza el nombre, precio y descripción de la bebida
+        lblNombreDesayuno.get(index).setText(nombre);
+        lblPrecioDesayuno.get(index).setText(String.format("%.2f", precio));
+        lblDescripcionDesayuno.get(index).setText(descripcion);
+        lblIdDesayuno.get(index).setText(Integer.toString(id)); // Guardar el ID de la bebida en un JLabel oculto (opcional)
+
+        // Carga la imagen desde la ruta almacenada en el objeto Bebida
+        if (imagenRuta != null && !imagenRuta.isEmpty()) {
+            ImageIcon icon = new ImageIcon(imagenRuta);
+            lblImagen.setIcon(icon);
+        } else {
+            System.err.println("La ruta de la imagen para la bebida en el panel " + index + " está vacía.");
+        }
+    }
+
+// Método para actualizar un panel de postre específico con nombre, precio, imagen, descripción e ID
+    public void actualizarPanelPostre(int index, int id, String nombre, double precio, String descripcion, String imagenRuta) {
+        if (index < 0 || index >= lblNombreDesayuno.size()) {
+            System.err.println("Índice de panel de postre inválido: " + index);
+            return;
+        }
+
+        JLabel lblImagen = lblImagenDesayuno.get(index);
+
+        // Actualiza el nombre, precio, descripción y ID del postre
+        lblNombreDesayuno.get(index).setText(nombre);
+        lblPrecioDesayuno.get(index).setText(String.format("%.2f", precio));
+        lblDescripcionDesayuno.get(index).setText(descripcion);
+        lblIdDesayuno.get(index).setText(Integer.toString(id)); // Guardar el ID del postre en un JLabel oculto (opcional)
+
+        // Carga la imagen desde la ruta almacenada en el objeto Postre
+        if (imagenRuta != null && !imagenRuta.isEmpty()) {
+            ImageIcon icon = new ImageIcon(imagenRuta);
+            lblImagen.setIcon(icon);
+        } else {
+            System.err.println("La ruta de la imagen para el postre en el panel " + index + " está vacía.");
         }
     }
 
@@ -247,103 +417,8 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         GestorCombos gestorCombos = new GestorCombos();
         gestorCombos.actualizarPanelesIndividuales(this);
     }
-
-    public void actualizarPanelEnsalada(int index, String nombre, double precio, String descripcion, String imagenRuta) {
-        if (index < 0 || index >= lblImagenDesayuno.size()) {
-            System.err.println("Índice de panel de ensalada inválido: " + index);
-            return;
-        }
-
-        JLabel lblImagen = lblImagenDesayuno.get(index);
-
-        // Actualiza el nombre y precio de la ensalada
-        lblNombreDesayuno.get(index).setText(nombre);
-        lblPrecioDesayuno.get(index).setText(String.format("%.2f", precio));
-
-        // Establece la descripción de la ensalada
-        lblDescripcionDesayuno.get(index).setText(descripcion);
-
-        // Carga la imagen desde la ruta almacenada en la base de datos
-        if (imagenRuta != null && !imagenRuta.isEmpty()) {
-            ImageIcon icon = new ImageIcon(imagenRuta);
-            lblImagen.setIcon(icon);
-        } else {
-            System.err.println("La ruta de la imagen para la ensalada en el panel " + index + " está vacía.");
-        }
-    }
-
-    // Método para actualizar un panel de individual específico con nombre, precio, imagen y descripción
-    public void actualizarPanelIndividual(int index, String nombre, double precio, String imagenRuta, String descripcion) {
-        if (index < 0 || index >= lblImagenDesayuno.size()) {
-            System.err.println("Índice de panel de individual inválido: " + index);
-            return;
-        }
-
-        JLabel lblImagen = lblImagenDesayuno.get(index);
-
-        // Actualiza el nombre y precio del individual
-        lblNombreDesayuno.get(index).setText(nombre);
-        lblPrecioDesayuno.get(index).setText(String.format("%.2f", precio));
-
-        // Establece la descripción del individual
-        lblDescripcionDesayuno.get(index).setText(descripcion);
-
-        // Carga la imagen desde la ruta almacenada en el objeto Individual
-        if (imagenRuta != null && !imagenRuta.isEmpty()) {
-            ImageIcon icon = new ImageIcon(imagenRuta);
-            lblImagen.setIcon(icon);
-        } else {
-            System.err.println("La ruta de la imagen para el individual en el panel " + index + " está vacía.");
-        }
-    }
-
-// Método para actualizar un panel de bebida específico con nombre, precio, imagen y descripción
-    public void actualizarPanelBebida(int index, String nombre, double precio, String descripcion, String imagenRuta) {
-        if (index < 0 || index >= lblImagenDesayuno.size()) {
-            System.err.println("Índice de panel de bebida inválido: " + index);
-            return;
-        }
-
-        JLabel lblImagen = lblImagenDesayuno.get(index);
-
-        // Actualiza el nombre, precio y descripción de la bebida
-        lblNombreDesayuno.get(index).setText(nombre);
-        lblPrecioDesayuno.get(index).setText(String.format("%.2f", precio));
-        lblDescripcionDesayuno.get(index).setText(descripcion);
-
-        // Carga la imagen desde la ruta almacenada en el objeto Bebida
-        if (imagenRuta != null && !imagenRuta.isEmpty()) {
-            ImageIcon icon = new ImageIcon(imagenRuta);
-            lblImagen.setIcon(icon);
-        } else {
-            System.err.println("La ruta de la imagen para la bebida en el panel " + index + " está vacía.");
-        }
-    }
-// Método para actualizar un panel de postre específico con nombre, precio, imagen y descripción
-
-    public void actualizarPanelPostre(int index, String nombre, double precio, String descripcion, String imagenRuta) {
-        if (index < 0 || index >= lblImagenDesayuno.size()) {
-            System.err.println("Índice de panel de postre inválido: " + index);
-            return;
-        }
-
-        JLabel lblImagen = lblImagenDesayuno.get(index);
-
-        // Actualiza el nombre, precio y descripción del postre
-        lblNombreDesayuno.get(index).setText(nombre);
-        lblPrecioDesayuno.get(index).setText(String.format("%.2f", precio));
-        lblDescripcionDesayuno.get(index).setText(descripcion);
-
-        // Carga la imagen desde la ruta almacenada en el objeto Postre
-        if (imagenRuta != null && !imagenRuta.isEmpty()) {
-            ImageIcon icon = new ImageIcon(imagenRuta);
-            lblImagen.setIcon(icon);
-        } else {
-            System.err.println("La ruta de la imagen para el postre en el panel " + index + " está vacía.");
-        }
-    }
-
 // Agregamos un método para cargar los combos de pollo
+
     private void cargarCombosPollo() {
         GestorCombos gestorCombos = new GestorCombos();
         gestorCombos.actualizarPanelesCombosPollo(this);
@@ -364,11 +439,15 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         gestorCombos.actualizarPanelesPostres(this);
     }
 
-    private void abrirFormularioAgregarAlCarrito(String nombre, double precio, String descripcion, String imagen) {
-        FormAgregarAlCarrito formAgregarAlCarrito = new FormAgregarAlCarrito(this, carrito);
-        formAgregarAlCarrito.actualizarCombo(nombre, precio, descripcion, imagen);
+    private void abrirFormularioAgregarAlCarrito(int id, String nombre, double precio, String descripcion, String imagen, String categoriaSeleccionada) {
+        FormAgregarAlCarrito formAgregarAlCarrito = new FormAgregarAlCarrito(this, carrito, categoriaSeleccionada);
+        formAgregarAlCarrito.actualizarCombo(id, nombre, precio, descripcion, imagen);
         formAgregarAlCarrito.setLocationRelativeTo(null); // Centrar en la pantalla
         formAgregarAlCarrito.setVisible(true);
+    }
+
+    public void setCategoriaSeleccionada(String categoriaSeleccionada) {
+        this.categoriaSeleccionada = categoriaSeleccionada;
     }
 
     @SuppressWarnings("unchecked")
@@ -379,6 +458,7 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         pnlCombo1 = new javax.swing.JPanel();
         lblPrecioCombo1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        lbl_IdCombo1 = new javax.swing.JLabel();
         lblImagenCombo1 = new javax.swing.JLabel();
         pnlInfoCombo1 = new javax.swing.JPanel();
         lblNombreCombo1 = new javax.swing.JLabel();
@@ -389,10 +469,12 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         lblDescripcionCombo5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         lblPrecioCombo5 = new javax.swing.JLabel();
+        lbl_IdCombo5 = new javax.swing.JLabel();
         lblImagenCombo5 = new javax.swing.JLabel();
         pnlCombo2 = new javax.swing.JPanel();
         lblPrecioCombo2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        lbl_IdCombo2 = new javax.swing.JLabel();
         lblImagenCombo2 = new javax.swing.JLabel();
         pnlInfoCombo2 = new javax.swing.JPanel();
         lblNombreCombo2 = new javax.swing.JLabel();
@@ -400,6 +482,7 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         pnlCombo6 = new javax.swing.JPanel();
         lblPrecioCombo6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        lbl_IdCombo6 = new javax.swing.JLabel();
         lblImagenCombo6 = new javax.swing.JLabel();
         pnlInfoCombo6 = new javax.swing.JPanel();
         lblNombreCombo6 = new javax.swing.JLabel();
@@ -407,6 +490,7 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         pnlCombo4 = new javax.swing.JPanel();
         lblPrecioCombo4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        lbl_IdCombo4 = new javax.swing.JLabel();
         lblImagenCombo4 = new javax.swing.JLabel();
         pnlInfoCombo4 = new javax.swing.JPanel();
         lblNombreCombo4 = new javax.swing.JLabel();
@@ -414,12 +498,14 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         pnlCombo8 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         lblPrecioCombo8 = new javax.swing.JLabel();
+        lbl_IdCombo8 = new javax.swing.JLabel();
         lblImagenCombo8 = new javax.swing.JLabel();
         pnlInfoCombo8 = new javax.swing.JPanel();
         lblNombreCombo8 = new javax.swing.JLabel();
         lblDescripcionCombo8 = new javax.swing.JLabel();
         pnlCombo3 = new javax.swing.JPanel();
         lblPrecioCombo3 = new javax.swing.JLabel();
+        lbl_IdCombo3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lblImagenCombo3 = new javax.swing.JLabel();
         pnlInfoCombo3 = new javax.swing.JPanel();
@@ -428,6 +514,7 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         pnlCombo7 = new javax.swing.JPanel();
         lblPrecioCombo7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        lbl_IdCombo7 = new javax.swing.JLabel();
         lblImagenCombo7 = new javax.swing.JLabel();
         pnlInfoCombo7 = new javax.swing.JPanel();
         lblNombreCombo7 = new javax.swing.JLabel();
@@ -446,6 +533,7 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         lblIcono = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         lblSalir = new javax.swing.JLabel();
+        lblNombreUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 255));
@@ -478,6 +566,9 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
         jLabel5.setText("$");
         pnlCombo1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+
+        lbl_IdCombo1.setText("id");
+        pnlCombo1.add(lbl_IdCombo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         lblImagenCombo1.setText("jLabel3");
         lblImagenCombo1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -553,6 +644,9 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         lblPrecioCombo5.setText("Precio");
         pnlCombo5.add(lblPrecioCombo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 0, 60, -1));
 
+        lbl_IdCombo5.setText("id");
+        pnlCombo5.add(lbl_IdCombo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
         lblImagenCombo5.setText("jLabel3");
         lblImagenCombo5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -590,6 +684,9 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setText("$");
         pnlCombo2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+
+        lbl_IdCombo2.setText("id");
+        pnlCombo2.add(lbl_IdCombo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         lblImagenCombo2.setText("jLabel3");
         lblImagenCombo2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -643,6 +740,9 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         jLabel10.setText("$");
         pnlCombo6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
 
+        lbl_IdCombo6.setText("jLabel12");
+        pnlCombo6.add(lbl_IdCombo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
         lblImagenCombo6.setText("jLabel3");
         lblImagenCombo6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -694,6 +794,9 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 51, 51));
         jLabel8.setText("$");
         pnlCombo4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+
+        lbl_IdCombo4.setText("id");
+        pnlCombo4.add(lbl_IdCombo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         lblImagenCombo4.setText("jLabel3");
         lblImagenCombo4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -747,6 +850,9 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         lblPrecioCombo8.setText("Precio");
         pnlCombo8.add(lblPrecioCombo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 0, 80, -1));
 
+        lbl_IdCombo8.setText("id");
+        pnlCombo8.add(lbl_IdCombo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
         lblImagenCombo8.setText("jLabel3");
         lblImagenCombo8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -793,6 +899,9 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         lblPrecioCombo3.setForeground(new java.awt.Color(255, 51, 51));
         lblPrecioCombo3.setText("Precio");
         pnlCombo3.add(lblPrecioCombo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 0, 60, -1));
+
+        lbl_IdCombo3.setText("jLabel2");
+        pnlCombo3.add(lbl_IdCombo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 51, 51));
@@ -850,6 +959,9 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 51, 51));
         jLabel11.setText("$");
         pnlCombo7.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+
+        lbl_IdCombo7.setText("id");
+        pnlCombo7.add(lbl_IdCombo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         lblImagenCombo7.setText("jLabel3");
         lblImagenCombo7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -942,6 +1054,11 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         btnConfirmarPedido.setText("Confirmar Pedido");
         btnConfirmarPedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnConfirmarPedido.setFocusable(false);
+        btnConfirmarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarPedidoActionPerformed(evt);
+            }
+        });
         panelFondo.add(btnConfirmarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 10, 230, 60));
 
         btnBebidas.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -991,12 +1108,17 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         panelFondo.add(btnInicioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, 150, 60));
 
         lblIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ico.png"))); // NOI18N
+        lblIcono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIconoMouseClicked(evt);
+            }
+        });
         panelFondo.add(lblIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 70, -1));
 
-        lblTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 65)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setText("F R E D D Y ´S");
-        panelFondo.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 5, -1, 80));
+        panelFondo.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, 80));
 
         lblSalir.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         lblSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -1008,7 +1130,19 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
                 lblSalirMouseClicked(evt);
             }
         });
-        panelFondo.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 120, 60));
+        panelFondo.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 100, 60));
+
+        lblNombreUsuario.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
+        lblNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreUsuario.setText("user");
+        lblNombreUsuario.setToolTipText("Presiona para cerrar sesión");
+        lblNombreUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblNombreUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNombreUsuarioMouseClicked(evt);
+            }
+        });
+        panelFondo.add(lblNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 120, 60));
 
         getContentPane().add(panelFondo);
         panelFondo.setBounds(0, 0, 1290, 720);
@@ -1132,36 +1266,41 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlCombo1MouseClicked
 
     private void lblImagenCombo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo1MouseClicked
-
-        // Obtener datos del combo de desayuno seleccionado
         int index = panelesDesayuno.indexOf(pnlCombo1); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
         String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
         String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
         double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
 
-        // Obtener la imagen del combo
+// Obtener la imagen del combo
         JLabel lblImagenCombo = lblImagenDesayuno.get(index);
         Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
         ImageIcon imageIcon = null;
         String imagen = "";
 
-        // Verifica si el icono es una instancia de ImageIcon
+// Verifica si el icono es una instancia de ImageIcon
         if (icon instanceof ImageIcon) {
             imageIcon = (ImageIcon) icon;
             imagen = imageIcon != null ? imageIcon.getDescription() : "";
         } else {
             System.err.println("El icono no es una instancia de ImageIcon");
         }
-
-        // Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
-        abrirFormularioAgregarAlCarrito(nombre, precio, descripcion, imagen);
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
         this.setEnabled(false);
     }//GEN-LAST:event_lblImagenCombo1MouseClicked
 
     private void lblImagenCombo2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo2MouseClicked
-
-        // Obtener datos del combo de desayuno seleccionado
+        // Obtener el ID del combo de desayuno seleccionado
         int index = panelesDesayuno.indexOf(pnlCombo2); // Obtén el índice del panel de desayuno seleccionado
+        int id = Integer.parseInt(lblIdDesayuno.get(index).getText()); // Obtén el ID del combo
+
+        // Obtener otros datos del combo de desayuno seleccionado
         String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
         String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
         double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
@@ -1181,13 +1320,22 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         }
 
         // Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
-        abrirFormularioAgregarAlCarrito(nombre, precio, descripcion, imagen);
-       this.setEnabled(false);
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
     }//GEN-LAST:event_lblImagenCombo2MouseClicked
 
     private void lblImagenCombo3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo3MouseClicked
-        // Obtener datos del combo de desayuno seleccionado
+        // Obtener el ID del combo de desayuno seleccionado
         int index = panelesDesayuno.indexOf(pnlCombo3); // Obtén el índice del panel de desayuno seleccionado
+        int id;
+        try {
+            id = Integer.parseInt(lblIdDesayuno.get(index).getText());
+        } catch (NumberFormatException e) {
+            System.err.println("El ID no es un número válido: " + e.getMessage());
+            return; // O toma otra acción apropiada
+        }
+
+        // Obtener otros datos del combo de desayuno seleccionado
         String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
         String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
         double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
@@ -1207,13 +1355,16 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         }
 
         // Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
-        abrirFormularioAgregarAlCarrito(nombre, precio, descripcion, imagen);
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
         this.setEnabled(false);
     }//GEN-LAST:event_lblImagenCombo3MouseClicked
 
     private void lblImagenCombo4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo4MouseClicked
-        // Obtener datos del combo de desayuno seleccionado
+        // Obtener el ID del combo de desayuno seleccionado
         int index = panelesDesayuno.indexOf(pnlCombo4); // Obtén el índice del panel de desayuno seleccionado
+        int id = Integer.parseInt(lblIdDesayuno.get(index).getText()); // Obtén el ID del combo
+
+        // Obtener otros datos del combo de desayuno seleccionado
         String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
         String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
         double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
@@ -1233,13 +1384,16 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         }
 
         // Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
-        abrirFormularioAgregarAlCarrito(nombre, precio, descripcion, imagen);
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
         this.setEnabled(false);
     }//GEN-LAST:event_lblImagenCombo4MouseClicked
 
     private void lblImagenCombo5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo5MouseClicked
-        // Obtener datos del combo de desayuno seleccionado
+        // Obtener el ID del combo de desayuno seleccionado
         int index = panelesDesayuno.indexOf(pnlCombo5); // Obtén el índice del panel de desayuno seleccionado
+        int id = Integer.parseInt(lblIdDesayuno.get(index).getText()); // Obtén el ID del combo
+
+        // Obtener otros datos del combo de desayuno seleccionado
         String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
         String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
         double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
@@ -1259,13 +1413,16 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         }
 
         // Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
-        abrirFormularioAgregarAlCarrito(nombre, precio, descripcion, imagen);
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
         this.setEnabled(false);
     }//GEN-LAST:event_lblImagenCombo5MouseClicked
 
     private void lblImagenCombo6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo6MouseClicked
-        // Obtener datos del combo de desayuno seleccionado
+        // Obtener el ID del combo de desayuno seleccionado
         int index = panelesDesayuno.indexOf(pnlCombo6); // Obtén el índice del panel de desayuno seleccionado
+        int id = Integer.parseInt(lblIdDesayuno.get(index).getText()); // Obtén el ID del combo
+
+        // Obtener otros datos del combo de desayuno seleccionado
         String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
         String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
         double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
@@ -1285,13 +1442,16 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         }
 
         // Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
-        abrirFormularioAgregarAlCarrito(nombre, precio, descripcion, imagen);
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
         this.setEnabled(false);
     }//GEN-LAST:event_lblImagenCombo6MouseClicked
 
     private void lblImagenCombo7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo7MouseClicked
-// Obtener datos del combo de desayuno seleccionado
+        // Obtener el ID del combo de desayuno seleccionado
         int index = panelesDesayuno.indexOf(pnlCombo7); // Obtén el índice del panel de desayuno seleccionado
+        int id = Integer.parseInt(lblIdDesayuno.get(index).getText()); // Obtén el ID del combo
+
+        // Obtener otros datos del combo de desayuno seleccionado
         String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
         String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
         double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
@@ -1311,13 +1471,16 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         }
 
         // Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
-        abrirFormularioAgregarAlCarrito(nombre, precio, descripcion, imagen);
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
         this.setEnabled(false);
     }//GEN-LAST:event_lblImagenCombo7MouseClicked
 
     private void lblImagenCombo8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo8MouseClicked
-        // Obtener datos del combo de desayuno seleccionado
+        // Obtener el ID del combo de desayuno seleccionado
         int index = panelesDesayuno.indexOf(pnlCombo8); // Obtén el índice del panel de desayuno seleccionado
+        int id = Integer.parseInt(lblIdDesayuno.get(index).getText()); // Obtén el ID del combo
+
+        // Obtener otros datos del combo de desayuno seleccionado
         String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
         String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
         double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
@@ -1337,13 +1500,14 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         }
 
         // Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
-        abrirFormularioAgregarAlCarrito(nombre, precio, descripcion, imagen);
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
         this.setEnabled(false);
     }//GEN-LAST:event_lblImagenCombo8MouseClicked
 
     private void btnInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioSesionActionPerformed
-        FormInicioSesion formIncioSesion = new FormInicioSesion();
-        formIncioSesion.setVisible(true);
+        FormInicioSesion formInicioSesion = new FormInicioSesion(this);
+        formInicioSesion.setVisible(true);
+        this.setEnabled(false);
     }//GEN-LAST:event_btnInicioSesionActionPerformed
 
     private void lblImagenCombo1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo1MouseEntered
@@ -1371,11 +1535,11 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblImagenCombo3MouseExited
 
     private void lblImagenCombo4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo4MouseEntered
-         setRedBorder(pnlCombo4, pnlInfoCombo4);
+        setRedBorder(pnlCombo4, pnlInfoCombo4);
     }//GEN-LAST:event_lblImagenCombo4MouseEntered
 
     private void lblImagenCombo4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo4MouseExited
-       removeRedBorder(pnlCombo4, pnlInfoCombo4);
+        removeRedBorder(pnlCombo4, pnlInfoCombo4);
     }//GEN-LAST:event_lblImagenCombo4MouseExited
 
     private void lblImagenCombo5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo5MouseEntered
@@ -1395,7 +1559,7 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblImagenCombo6MouseExited
 
     private void lblImagenCombo7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo7MouseEntered
-         setRedBorder(pnlCombo7, pnlInfoCombo7);
+        setRedBorder(pnlCombo7, pnlInfoCombo7);
     }//GEN-LAST:event_lblImagenCombo7MouseEntered
 
     private void lblImagenCombo7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo7MouseExited
@@ -1410,15 +1574,50 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         removeRedBorder(pnlCombo8, pnlInfoCombo8);
     }//GEN-LAST:event_lblImagenCombo8MouseExited
 
+    private void btnConfirmarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarPedidoActionPerformed
+        // Aquí debes asegurarte de tener una instancia válida de InicioDeSesion
+        InicioDeSesion inicioSesion = obtenerInicioDeSesion(); // Debes implementar este método
+        FormConfirmarPedido confirmarPedido = new FormConfirmarPedido(carrito, this, inicioSesion);
+        confirmarPedido.setVisible(true);
+        this.setEnabled(false);
+    }//GEN-LAST:event_btnConfirmarPedidoActionPerformed
+
+    private void lblNombreUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreUsuarioMouseClicked
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de cerrar la sesión actual?", "Confirmar cierre de sesión", JOptionPane.YES_NO_OPTION);
+        if (opcion == JOptionPane.YES_OPTION) {
+            // Notificar al InicioDeSesion que la sesión debe cerrarse
+            inicioSesion.cerrarSesion();
+        }
+        lblNombreUsuario.setText("user");
+        lblNombreUsuario.setVisible(false);
+    }//GEN-LAST:event_lblNombreUsuarioMouseClicked
+
+    private void lblIconoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconoMouseClicked
+        this.dispose();
+        FormInicioSesionAdmin formInicioSesionAdmin = new FormInicioSesionAdmin();
+        formInicioSesionAdmin.setVisible(true);
+    }//GEN-LAST:event_lblIconoMouseClicked
     public static void main(String args[]) {
         // Crear una instancia de la clase Carrito
         Carrito carrito = new Carrito();
 
-        // Crear una instancia del formulario para agregar al carrito y pasarle tanto el formulario principal como el carrito como argumentos
-        FormAgregarAlCarrito formAgregarAlCarrito = new FormAgregarAlCarrito(null, carrito);
+        // Obtener la categoría seleccionada (aquí deberías obtenerla de alguna manera)
+        String categoriaSeleccionada = "Desayunos"; // Por ejemplo, asumamos que es "Desayunos"
 
-        // Crear una instancia del formulario principal y pasarle el carrito como argumento
-        FormMenuPrincipal formMenuPrincipal = new FormMenuPrincipal(formAgregarAlCarrito);
+        // Crear una instancia del formulario para agregar al carrito y pasarle tanto el formulario principal como el carrito como argumentos
+        FormAgregarAlCarrito formAgregarAlCarrito = new FormAgregarAlCarrito(null, carrito, categoriaSeleccionada);
+
+        // Obtener la instancia única de InicioDeSesion
+        InicioDeSesion inicioSesion = InicioDeSesion.obtenerInstancia();
+
+        // Crear una instancia del formulario principal y pasarle el carrito y la instancia de InicioDeSesion como argumentos
+        FormMenuPrincipal formMenuPrincipal = new FormMenuPrincipal(formAgregarAlCarrito, carrito, categoriaSeleccionada, inicioSesion);
+
+        // Establecer la categoría seleccionada en el formulario principal
+        formMenuPrincipal.setCategoriaSeleccionada(categoriaSeleccionada);
+
+        // Establecer la referencia al formulario principal en el formulario para agregar al carrito
+        formAgregarAlCarrito.setFormMenuPrincipal(formMenuPrincipal, carrito);
 
         // Hacer visible el formulario principal en el hilo de despacho de eventos de Swing
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1472,6 +1671,7 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombreCombo6;
     private javax.swing.JLabel lblNombreCombo7;
     private javax.swing.JLabel lblNombreCombo8;
+    private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblPrecioCombo1;
     private javax.swing.JLabel lblPrecioCombo2;
     private javax.swing.JLabel lblPrecioCombo3;
@@ -1482,6 +1682,14 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblPrecioCombo8;
     private javax.swing.JLabel lblSalir;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lbl_IdCombo1;
+    private javax.swing.JLabel lbl_IdCombo2;
+    private javax.swing.JLabel lbl_IdCombo3;
+    private javax.swing.JLabel lbl_IdCombo4;
+    private javax.swing.JLabel lbl_IdCombo5;
+    private javax.swing.JLabel lbl_IdCombo6;
+    private javax.swing.JLabel lbl_IdCombo7;
+    private javax.swing.JLabel lbl_IdCombo8;
     private javax.swing.JPanel panelCombos;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel pnlCombo1;

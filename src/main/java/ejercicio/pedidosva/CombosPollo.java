@@ -38,4 +38,8 @@ public class CombosPollo implements Combo {
     public String getImagen() {
         return imagen;
     }
+    @Override
+    public int getId(){
+        return id;
+    }
 }
