@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 public class FormMenuPrincipal extends javax.swing.JFrame implements SessionObserver {
 
@@ -44,7 +45,7 @@ public class FormMenuPrincipal extends javax.swing.JFrame implements SessionObse
         this.setExtendedState(this.MAXIMIZED_BOTH);
         ConexionBD.establecerConexion();
         lblNombreUsuario.setVisible(false);
-        
+
         System.out.println("FormMenuPrincipal: Instancia de InicioDeSesion recibida correctamente.");
         panelesDesayuno = new ArrayList<>();
         lblNombreDesayuno = new ArrayList<>();
@@ -106,7 +107,16 @@ public class FormMenuPrincipal extends javax.swing.JFrame implements SessionObse
         lblIdDesayuno.add(lbl_IdCombo6);
         lblIdDesayuno.add(lbl_IdCombo7);
         lblIdDesayuno.add(lbl_IdCombo8);
-
+        
+        lbl_IdCombo1.setVisible(false);
+        lbl_IdCombo2.setVisible(false);
+        lbl_IdCombo3.setVisible(false);
+        lbl_IdCombo4.setVisible(false);
+        lbl_IdCombo5.setVisible(false);
+        lbl_IdCombo6.setVisible(false);
+        lbl_IdCombo7.setVisible(false);
+        lbl_IdCombo8.setVisible(false);
+        
         // Agregar impresiones de depuración aquí
         System.out.println("Tamaño de panelesDesayuno: " + panelesDesayuno.size());
         System.out.println("Tamaño de lblNombreDesayuno: " + lblNombreDesayuno.size());
@@ -120,8 +130,8 @@ public class FormMenuPrincipal extends javax.swing.JFrame implements SessionObse
         // Aquí devolvemos la instancia global de InicioDeSesion si está disponible
         return this.inicioSesion;
     }
-    
-     // Método para actualizar el estado de la sesión en el menú principal
+
+    // Método para actualizar el estado de la sesión en el menú principal
     public void actualizarEstadoSesion(boolean sesionIniciada) {
         if (sesionIniciada) {
             // Si la sesión está iniciada, habilitar elementos relacionados con la sesión
@@ -133,30 +143,33 @@ public class FormMenuPrincipal extends javax.swing.JFrame implements SessionObse
             // Otros elementos que desees deshabilitar
         }
     }
-    private void limpiarInterfaz(){
+
+    private void limpiarInterfaz() {
         lblNombreUsuario.setText("User");
     }
+
     @Override
     public void onSesionCerrada() {
         // Aquí defines lo que deseas que ocurra cuando la sesión se cierre
         // Por ejemplo, podrías limpiar la interfaz o realizar otras acciones necesarias
         // También puedes agregar mensajes de depuración si lo deseas
         System.out.println("Sesión cerrada. Realizando acciones necesarias...");
-        
+
         // Por ejemplo, podrías limpiar la interfaz o realizar otras acciones necesarias
         // Ejemplo:
         limpiarInterfaz();
     }
-    
+
     @Override
     public void onSesionIniciada(int idUsuario) {
         // Aquí defines lo que deseas que ocurra cuando la sesión se inicie
         // Por ejemplo, podrías actualizar la interfaz o realizar otras acciones necesarias
         // También puedes agregar mensajes de depuración si lo deseas
         System.out.println("Sesión iniciada para el usuario con ID: " + idUsuario);
-        
+
     }
 // Método para actualizar el estado de la sesión en el menú principal
+
     /*
 public void confirmarPedido() {
   System.out.println("Confirmar pedido llamado"); // Verificar si se llama al método
@@ -586,6 +599,9 @@ public void confirmarPedido() {
 
         pnlInfoCombo1.setBackground(new java.awt.Color(0, 0, 255));
         pnlInfoCombo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlInfoCombo1MouseEntered(evt);
             }
@@ -611,6 +627,9 @@ public void confirmarPedido() {
         pnlCombo5.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCombo5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlCombo5MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlCombo5MouseEntered(evt);
             }
@@ -621,6 +640,11 @@ public void confirmarPedido() {
         pnlCombo5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlInfoCombo5.setBackground(new java.awt.Color(0, 0, 255));
+        pnlInfoCombo5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo5MouseClicked(evt);
+            }
+        });
         pnlInfoCombo5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombreCombo5.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
@@ -666,6 +690,9 @@ public void confirmarPedido() {
         pnlCombo2.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCombo2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlCombo2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlCombo2MouseEntered(evt);
             }
@@ -703,6 +730,17 @@ public void confirmarPedido() {
         pnlCombo2.add(lblImagenCombo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 160));
 
         pnlInfoCombo2.setBackground(new java.awt.Color(0, 0, 255));
+        pnlInfoCombo2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo2MouseExited(evt);
+            }
+        });
         pnlInfoCombo2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombreCombo2.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
@@ -721,6 +759,9 @@ public void confirmarPedido() {
         pnlCombo6.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCombo6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlCombo6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlCombo6MouseEntered(evt);
             }
@@ -758,6 +799,11 @@ public void confirmarPedido() {
         pnlCombo6.add(lblImagenCombo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 160));
 
         pnlInfoCombo6.setBackground(new java.awt.Color(0, 0, 255));
+        pnlInfoCombo6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo6MouseClicked(evt);
+            }
+        });
         pnlInfoCombo6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombreCombo6.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
@@ -776,6 +822,9 @@ public void confirmarPedido() {
         pnlCombo4.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCombo4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlCombo4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlCombo4MouseEntered(evt);
             }
@@ -813,6 +862,11 @@ public void confirmarPedido() {
         pnlCombo4.add(lblImagenCombo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 160));
 
         pnlInfoCombo4.setBackground(new java.awt.Color(0, 0, 255));
+        pnlInfoCombo4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo4MouseClicked(evt);
+            }
+        });
         pnlInfoCombo4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombreCombo4.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
@@ -831,6 +885,9 @@ public void confirmarPedido() {
         pnlCombo8.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCombo8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlCombo8MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlCombo8MouseEntered(evt);
             }
@@ -868,6 +925,11 @@ public void confirmarPedido() {
         pnlCombo8.add(lblImagenCombo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 160));
 
         pnlInfoCombo8.setBackground(new java.awt.Color(0, 0, 255));
+        pnlInfoCombo8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo8MouseClicked(evt);
+            }
+        });
         pnlInfoCombo8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombreCombo8.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
@@ -886,6 +948,9 @@ public void confirmarPedido() {
         pnlCombo3.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCombo3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlCombo3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlCombo3MouseEntered(evt);
             }
@@ -923,6 +988,14 @@ public void confirmarPedido() {
         pnlCombo3.add(lblImagenCombo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 160));
 
         pnlInfoCombo3.setBackground(new java.awt.Color(0, 0, 255));
+        pnlInfoCombo3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo3MouseEntered(evt);
+            }
+        });
         pnlInfoCombo3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombreCombo3.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
@@ -941,6 +1014,9 @@ public void confirmarPedido() {
         pnlCombo7.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCombo7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlCombo7MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlCombo7MouseEntered(evt);
             }
@@ -978,6 +1054,11 @@ public void confirmarPedido() {
         pnlCombo7.add(lblImagenCombo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 160));
 
         pnlInfoCombo7.setBackground(new java.awt.Color(0, 0, 255));
+        pnlInfoCombo7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo7MouseClicked(evt);
+            }
+        });
         pnlInfoCombo7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombreCombo7.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -994,16 +1075,18 @@ public void confirmarPedido() {
         panelCombos.add(pnlCombo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 270, 240));
 
         getContentPane().add(panelCombos);
-        panelCombos.setBounds(20, 160, 1240, 540);
+        panelCombos.setBounds(20, 180, 1240, 530);
 
         panelFondo.setBackground(new java.awt.Color(204, 51, 0));
         panelFondo.setForeground(new java.awt.Color(0, 0, 0));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         separator.setBackground(new java.awt.Color(0, 0, 0));
-        panelFondo.add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1290, 10));
+        panelFondo.add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1290, 10));
 
-        btnComboPollo.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        btnComboPollo.setBackground(new java.awt.Color(0, 0, 153));
+        btnComboPollo.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
+        btnComboPollo.setForeground(new java.awt.Color(255, 255, 255));
         btnComboPollo.setText("Combos Pollo");
         btnComboPollo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnComboPollo.setFocusable(false);
@@ -1012,9 +1095,11 @@ public void confirmarPedido() {
                 btnComboPolloActionPerformed(evt);
             }
         });
-        panelFondo.add(btnComboPollo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 150, 50));
+        panelFondo.add(btnComboPollo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 160, 60));
 
-        btnDesayunos.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        btnDesayunos.setBackground(new java.awt.Color(0, 0, 153));
+        btnDesayunos.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
+        btnDesayunos.setForeground(new java.awt.Color(255, 255, 255));
         btnDesayunos.setText("Desayunos");
         btnDesayunos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDesayunos.setFocusable(false);
@@ -1023,9 +1108,11 @@ public void confirmarPedido() {
                 btnDesayunosActionPerformed(evt);
             }
         });
-        panelFondo.add(btnDesayunos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 150, 50));
+        panelFondo.add(btnDesayunos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 60));
 
-        btnEnsaladas.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        btnEnsaladas.setBackground(new java.awt.Color(0, 0, 153));
+        btnEnsaladas.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
+        btnEnsaladas.setForeground(new java.awt.Color(255, 255, 255));
         btnEnsaladas.setText("Ensaladas");
         btnEnsaladas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEnsaladas.setFocusable(false);
@@ -1034,9 +1121,11 @@ public void confirmarPedido() {
                 btnEnsaladasActionPerformed(evt);
             }
         });
-        panelFondo.add(btnEnsaladas, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 150, 50));
+        panelFondo.add(btnEnsaladas, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 160, 60));
 
-        btnComboCarne.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        btnComboCarne.setBackground(new java.awt.Color(0, 0, 153));
+        btnComboCarne.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
+        btnComboCarne.setForeground(new java.awt.Color(255, 255, 255));
         btnComboCarne.setText("Combos Carne");
         btnComboCarne.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnComboCarne.setFocusable(false);
@@ -1045,7 +1134,7 @@ public void confirmarPedido() {
                 btnComboCarneActionPerformed(evt);
             }
         });
-        panelFondo.add(btnComboCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 160, 50));
+        panelFondo.add(btnComboCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 170, 60));
 
         btnConfirmarPedido.setBackground(new java.awt.Color(0, 0, 0));
         btnConfirmarPedido.setFont(new java.awt.Font("Trebuchet MS", 1, 19)); // NOI18N
@@ -1059,9 +1148,11 @@ public void confirmarPedido() {
                 btnConfirmarPedidoActionPerformed(evt);
             }
         });
-        panelFondo.add(btnConfirmarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 10, 230, 60));
+        panelFondo.add(btnConfirmarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 20, 230, 60));
 
-        btnBebidas.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        btnBebidas.setBackground(new java.awt.Color(0, 0, 153));
+        btnBebidas.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
+        btnBebidas.setForeground(new java.awt.Color(255, 255, 255));
         btnBebidas.setText("Bebidas");
         btnBebidas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBebidas.setFocusable(false);
@@ -1070,9 +1161,11 @@ public void confirmarPedido() {
                 btnBebidasActionPerformed(evt);
             }
         });
-        panelFondo.add(btnBebidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 100, 150, 50));
+        panelFondo.add(btnBebidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 110, 160, 60));
 
-        btnIndividuales.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        btnIndividuales.setBackground(new java.awt.Color(0, 0, 153));
+        btnIndividuales.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
+        btnIndividuales.setForeground(new java.awt.Color(255, 255, 255));
         btnIndividuales.setText("Individuales");
         btnIndividuales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIndividuales.setFocusable(false);
@@ -1081,9 +1174,11 @@ public void confirmarPedido() {
                 btnIndividualesActionPerformed(evt);
             }
         });
-        panelFondo.add(btnIndividuales, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, 150, 50));
+        panelFondo.add(btnIndividuales, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 110, 160, 60));
 
-        btnPostres1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        btnPostres1.setBackground(new java.awt.Color(0, 0, 153));
+        btnPostres1.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
+        btnPostres1.setForeground(new java.awt.Color(255, 255, 255));
         btnPostres1.setText("Postres");
         btnPostres1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPostres1.setFocusable(false);
@@ -1092,7 +1187,7 @@ public void confirmarPedido() {
                 btnPostres1ActionPerformed(evt);
             }
         });
-        panelFondo.add(btnPostres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 100, 150, 50));
+        panelFondo.add(btnPostres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 110, 150, 60));
 
         btnInicioSesion.setBackground(new java.awt.Color(51, 102, 255));
         btnInicioSesion.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -1105,24 +1200,26 @@ public void confirmarPedido() {
                 btnInicioSesionActionPerformed(evt);
             }
         });
-        panelFondo.add(btnInicioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, 150, 60));
+        panelFondo.add(btnInicioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 20, 150, 60));
 
         lblIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ico.png"))); // NOI18N
+        lblIcono.setToolTipText("Presiona Para Modo Administrador");
+        lblIcono.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblIcono.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblIconoMouseClicked(evt);
             }
         });
-        panelFondo.add(lblIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 70, -1));
+        panelFondo.add(lblIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, 80));
 
-        lblTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 55)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setText("F R E D D Y ´S");
-        panelFondo.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, 80));
+        panelFondo.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 390, 60));
 
         lblSalir.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         lblSalir.setForeground(new java.awt.Color(255, 255, 255));
-        lblSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit (1).png"))); // NOI18N
+        lblSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono_salir.png"))); // NOI18N
         lblSalir.setText("SALIR");
         lblSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblSalir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1130,7 +1227,7 @@ public void confirmarPedido() {
                 lblSalirMouseClicked(evt);
             }
         });
-        panelFondo.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 100, 60));
+        panelFondo.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 120, 60));
 
         lblNombreUsuario.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         lblNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -1142,7 +1239,7 @@ public void confirmarPedido() {
                 lblNombreUsuarioMouseClicked(evt);
             }
         });
-        panelFondo.add(lblNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 120, 60));
+        panelFondo.add(lblNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 120, 60));
 
         getContentPane().add(panelFondo);
         panelFondo.setBounds(0, 0, 1290, 720);
@@ -1262,7 +1359,33 @@ public void confirmarPedido() {
     }//GEN-LAST:event_btnPostres1ActionPerformed
 
     private void pnlCombo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCombo1MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo1); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
 
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
     }//GEN-LAST:event_pnlCombo1MouseClicked
 
     private void lblImagenCombo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo1MouseClicked
@@ -1577,9 +1700,13 @@ public void confirmarPedido() {
     private void btnConfirmarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarPedidoActionPerformed
         // Aquí debes asegurarte de tener una instancia válida de InicioDeSesion
         InicioDeSesion inicioSesion = obtenerInicioDeSesion(); // Debes implementar este método
-        FormConfirmarPedido confirmarPedido = new FormConfirmarPedido(carrito, this, inicioSesion);
+        if(inicioSesion.sesionIniciada()){
+            FormConfirmarPedido confirmarPedido = new FormConfirmarPedido(carrito, this, inicioSesion);
         confirmarPedido.setVisible(true);
-        this.setEnabled(false);
+        }else{
+            JOptionPane.showMessageDialog(this, "Error: sesión no iniciada.");
+        }
+        
     }//GEN-LAST:event_btnConfirmarPedidoActionPerformed
 
     private void lblNombreUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreUsuarioMouseClicked
@@ -1593,10 +1720,485 @@ public void confirmarPedido() {
     }//GEN-LAST:event_lblNombreUsuarioMouseClicked
 
     private void lblIconoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconoMouseClicked
-        this.dispose();
-        FormInicioSesionAdmin formInicioSesionAdmin = new FormInicioSesionAdmin();
+         // Deshabilitar el enfoque de los botones del cuadro de diálogo
+    UIManager.put("Button.focusable", Boolean.FALSE);
+    
+    int respuesta = JOptionPane.showConfirmDialog(null, 
+        "<html><div style='text-align: center;'>¿Estás seguro que deseas pasar a modo admin?<br/>Deberás iniciar sesión como administrador para acceder a las funciones de administrador.</div></html>",
+        "Confirmación", 
+        JOptionPane.YES_NO_OPTION);
+    
+    // Restaurar el comportamiento predeterminado del enfoque de los botones del sistema
+    UIManager.put("Button.focusable", Boolean.TRUE);
+    
+    if (respuesta == JOptionPane.YES_OPTION) {
+        this.setEnabled(false);
+        FormInicioSesionAdmin formInicioSesionAdmin = new FormInicioSesionAdmin(this);
         formInicioSesionAdmin.setVisible(true);
+    }
     }//GEN-LAST:event_lblIconoMouseClicked
+
+    private void pnlInfoCombo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo1MouseClicked
+       int index = panelesDesayuno.indexOf(pnlCombo1); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+    // Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+    // Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+    // Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlInfoCombo1MouseClicked
+
+    private void pnlInfoCombo2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo2MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo2); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlInfoCombo2MouseClicked
+
+    private void pnlCombo2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCombo2MouseClicked
+       int index = panelesDesayuno.indexOf(pnlCombo2); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlCombo2MouseClicked
+
+    private void pnlInfoCombo3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo3MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo3); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlInfoCombo3MouseClicked
+
+    private void pnlCombo3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCombo3MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo3); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlCombo3MouseClicked
+
+    private void pnlInfoCombo2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo2MouseEntered
+    pnlComboMouseEntered(evt, pnlCombo2, pnlInfoCombo2);
+    }//GEN-LAST:event_pnlInfoCombo2MouseEntered
+
+    private void pnlInfoCombo2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo2MouseExited
+        pnlComboMouseExited(evt, pnlCombo2, pnlInfoCombo2);
+    }//GEN-LAST:event_pnlInfoCombo2MouseExited
+
+    private void pnlInfoCombo3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo3MouseEntered
+        pnlComboMouseEntered(evt, pnlCombo3, pnlInfoCombo3);
+    }//GEN-LAST:event_pnlInfoCombo3MouseEntered
+
+    private void pnlInfoCombo4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo4MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo4); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlInfoCombo4MouseClicked
+
+    private void pnlCombo4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCombo4MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo4); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlCombo4MouseClicked
+
+    private void pnlInfoCombo5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo5MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo5); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlInfoCombo5MouseClicked
+
+    private void pnlCombo5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCombo5MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo5); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlCombo5MouseClicked
+
+    private void pnlInfoCombo6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo6MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo6); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlInfoCombo6MouseClicked
+
+    private void pnlCombo6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCombo6MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo6); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlCombo6MouseClicked
+
+    private void pnlInfoCombo7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo7MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo7); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlInfoCombo7MouseClicked
+
+    private void pnlCombo7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCombo7MouseClicked
+       int index = panelesDesayuno.indexOf(pnlCombo7); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlCombo7MouseClicked
+
+    private void pnlInfoCombo8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo8MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo8); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlInfoCombo8MouseClicked
+
+    private void pnlCombo8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCombo8MouseClicked
+        int index = panelesDesayuno.indexOf(pnlCombo8); // Obtén el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+
+// Obtener datos del combo de desayuno seleccionado
+        String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
+        String descripcion = lblDescripcionDesayuno.get(index).getText(); // Obtén la descripción del combo
+        double precio = Double.parseDouble(lblPrecioDesayuno.get(index).getText()); // Obtén el precio del combo
+
+// Obtener la imagen del combo
+        JLabel lblImagenCombo = lblImagenDesayuno.get(index);
+        Icon icon = lblImagenCombo.getIcon(); // Obtén el icono del JLabel
+        ImageIcon imageIcon = null;
+        String imagen = "";
+
+// Verifica si el icono es una instancia de ImageIcon
+        if (icon instanceof ImageIcon) {
+            imageIcon = (ImageIcon) icon;
+            imagen = imageIcon != null ? imageIcon.getDescription() : "";
+        } else {
+            System.err.println("El icono no es una instancia de ImageIcon");
+        }
+        // Obtener la categoría seleccionada
+        String categoriaSeleccionada = this.categoriaSeleccionada;
+// Abrir el formulario FormAgregarAlCarrito y pasarle los datos del combo
+        abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
+        this.setEnabled(false);
+    }//GEN-LAST:event_pnlCombo8MouseClicked
     public static void main(String args[]) {
         // Crear una instancia de la clase Carrito
         Carrito carrito = new Carrito();

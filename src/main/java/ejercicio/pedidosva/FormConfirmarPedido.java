@@ -53,6 +53,11 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
             btnLimpiarLista.setEnabled(false);
             return;
         }
+        if (carrito.getProductos().isEmpty()) {
+            
+            btnRealizarPedido.setEnabled(false);
+            btnLimpiarLista.setEnabled(false);
+        }
 
         // Si hay una sesión iniciada, continúa con la inicialización del formulario
         cargarProductosEnLista();
@@ -136,15 +141,20 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
         pnlFondo = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listPedido = new javax.swing.JList<>();
-        btnRegresarMenuPrincipal = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnRealizarPedido = new javax.swing.JButton();
-        btnLimpiarLista = new javax.swing.JButton();
-        cmbTipoPago = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         lblDireccionCliente = new javax.swing.JLabel();
         lblTotalPedido = new javax.swing.JLabel();
+        cmbTipoPago = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btnRegresarMenuPrincipal = new javax.swing.JButton();
+        btnLimpiarLista = new javax.swing.JButton();
+        btnRealizarPedido = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -153,13 +163,8 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
         pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         listPedido.setBackground(new java.awt.Color(255, 255, 255));
-        listPedido.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        listPedido.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         listPedido.setForeground(new java.awt.Color(0, 0, 0));
-        listPedido.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         listPedido.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listPedido.setToolTipText("Tus Combos Seleccionados");
         listPedido.setAlignmentX(1.0F);
@@ -167,7 +172,55 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
         listPedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(listPedido);
 
-        pnlFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 460, 140));
+        pnlFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 460, 120));
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Finalizar Pedido");
+        pnlFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 380, 60));
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Dirección de Entrega:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 30));
+
+        lblDireccionCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDireccionCliente.setForeground(new java.awt.Color(255, 255, 255));
+        lblDireccionCliente.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblDireccionCliente.setText("Direccion");
+        lblDireccionCliente.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel1.add(lblDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        lblTotalPedido.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        lblTotalPedido.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalPedido.setText("TOTAL");
+        jPanel1.add(lblTotalPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 310, 60));
+
+        cmbTipoPago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(cmbTipoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 120, -1));
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Método de pago:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
+
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Télefono");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("#num");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel7.setText("¡Recibirás un Email de confirmación!");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
+
+        pnlFondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 460, 290));
 
         btnRegresarMenuPrincipal.setBackground(new java.awt.Color(0, 0, 0));
         btnRegresarMenuPrincipal.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
@@ -180,25 +233,7 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
                 btnRegresarMenuPrincipalActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnRegresarMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 110, 60));
-
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Finalizar Pedido");
-        pnlFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 380, 60));
-
-        btnRealizarPedido.setBackground(new java.awt.Color(51, 153, 255));
-        btnRealizarPedido.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        btnRealizarPedido.setForeground(new java.awt.Color(255, 255, 255));
-        btnRealizarPedido.setText("REALIZAR PEDIDO");
-        btnRealizarPedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRealizarPedido.setFocusable(false);
-        btnRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRealizarPedidoActionPerformed(evt);
-            }
-        });
-        pnlFondo.add(btnRealizarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 150, 60));
+        pnlFondo.add(btnRegresarMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 130, 50));
 
         btnLimpiarLista.setBackground(new java.awt.Color(0, 0, 0));
         btnLimpiarLista.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
@@ -211,35 +246,27 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
                 btnLimpiarListaActionPerformed(evt);
             }
         });
-        pnlFondo.add(btnLimpiarLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 110, 60));
+        pnlFondo.add(btnLimpiarLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, 130, 50));
 
-        cmbTipoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbTipoPago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pnlFondo.add(cmbTipoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 120, -1));
+        btnRealizarPedido.setBackground(new java.awt.Color(0, 0, 204));
+        btnRealizarPedido.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        btnRealizarPedido.setForeground(new java.awt.Color(255, 255, 255));
+        btnRealizarPedido.setText("Realizar Pedido");
+        btnRealizarPedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRealizarPedido.setFocusable(false);
+        btnRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRealizarPedidoActionPerformed(evt);
+            }
+        });
+        pnlFondo.add(btnRealizarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, 150, 50));
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Método de pago:");
-        pnlFondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, 30));
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Tu carrito contiene:");
+        pnlFondo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 255, 255));
-        jLabel3.setText("Dirección de Entrega:");
-        pnlFondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, 30));
-
-        lblDireccionCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblDireccionCliente.setForeground(new java.awt.Color(255, 255, 255));
-        lblDireccionCliente.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblDireccionCliente.setText("Direccion");
-        lblDireccionCliente.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        pnlFondo.add(lblDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, 20));
-
-        lblTotalPedido.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        lblTotalPedido.setForeground(new java.awt.Color(255, 255, 255));
-        lblTotalPedido.setText("TOTAL");
-        pnlFondo.add(lblTotalPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 310, 60));
-
-        getContentPane().add(pnlFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
+        getContentPane().add(pnlFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -330,6 +357,7 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
         carrito.vaciarCarrito();
         DefaultListModel<String> listModel = (DefaultListModel<String>) listPedido.getModel();
         listModel.clear();
+        btnRealizarPedido.setEnabled(false);
     }//GEN-LAST:event_btnLimpiarListaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -340,6 +368,11 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDireccionCliente;
     private javax.swing.JLabel lblTotalPedido;

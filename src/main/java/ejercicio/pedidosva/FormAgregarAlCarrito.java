@@ -32,7 +32,7 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
         this.categoriaSeleccionada = categoriaSeleccionada;
         this.setUndecorated(true); // Establecer undecorated a true
         initComponents();
-
+        id_Combo.setVisible(false);
     }
 
     public Carrito getCarrito() {
@@ -126,6 +126,7 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
         lblPrecioCombo = new javax.swing.JLabel();
         btnRegresarMenuPrincipal = new javax.swing.JButton();
         id_Combo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -141,7 +142,7 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
         lblDescripcionCombo.setForeground(new java.awt.Color(0, 0, 0));
         lblDescripcionCombo.setText("Aqui se vera la descripción");
         lblDescripcionCombo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel2.add(lblDescripcionCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 200, 40));
+        jPanel2.add(lblDescripcionCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 210, 40));
 
         lblImagenCombo.setForeground(new java.awt.Color(0, 0, 0));
         lblImagenCombo.setText("imagen Combo");
@@ -149,8 +150,9 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
         jPanel2.add(lblImagenCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 250, 140));
 
         btnAgregarAlCarrito.setBackground(new java.awt.Color(51, 51, 255));
-        btnAgregarAlCarrito.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        btnAgregarAlCarrito.setText("Agregar a pedido");
+        btnAgregarAlCarrito.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        btnAgregarAlCarrito.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarAlCarrito.setText("Añadir al Carrito");
         btnAgregarAlCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarAlCarrito.setFocusable(false);
         btnAgregarAlCarrito.addActionListener(new java.awt.event.ActionListener() {
@@ -158,9 +160,11 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
                 btnAgregarAlCarritoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAgregarAlCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 150, 70));
+        jPanel2.add(btnAgregarAlCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 220, 70));
 
+        btnIncrementar.setBackground(new java.awt.Color(0, 255, 0));
         btnIncrementar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnIncrementar.setForeground(new java.awt.Color(0, 0, 0));
         btnIncrementar.setText("+");
         btnIncrementar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIncrementar.setFocusable(false);
@@ -169,9 +173,11 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
                 btnIncrementarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnIncrementar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 70, 50));
+        jPanel2.add(btnIncrementar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 70, 60));
 
-        btnDecrementar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnDecrementar.setBackground(new java.awt.Color(204, 0, 0));
+        btnDecrementar.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        btnDecrementar.setForeground(new java.awt.Color(0, 0, 0));
         btnDecrementar.setText("-");
         btnDecrementar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDecrementar.setFocusable(false);
@@ -180,30 +186,30 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
                 btnDecrementarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnDecrementar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 70, 50));
+        jPanel2.add(btnDecrementar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 70, 60));
 
-        lblCantidad.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        lblCantidad.setFont(new java.awt.Font("Trebuchet MS", 1, 30)); // NOI18N
         lblCantidad.setForeground(new java.awt.Color(0, 0, 0));
         lblCantidad.setText("1");
-        jPanel2.add(lblCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 40, -1));
+        jPanel2.add(lblCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 50, -1));
 
-        lblNombreCombo.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        lblNombreCombo.setFont(new java.awt.Font("Trebuchet MS", 1, 39)); // NOI18N
         lblNombreCombo.setForeground(new java.awt.Color(0, 0, 0));
         lblNombreCombo.setText("jLabel1");
-        jPanel2.add(lblNombreCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 70));
+        jPanel2.add(lblNombreCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 490, 60));
 
         lblPrecioCombo.setBackground(new java.awt.Color(255, 0, 0));
         lblPrecioCombo.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         lblPrecioCombo.setForeground(new java.awt.Color(255, 0, 51));
         lblPrecioCombo.setText("precio");
-        jPanel2.add(lblPrecioCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 160, -1));
+        jPanel2.add(lblPrecioCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 160, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 470, 300));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 500, 300));
 
         btnRegresarMenuPrincipal.setBackground(new java.awt.Color(0, 0, 0));
-        btnRegresarMenuPrincipal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRegresarMenuPrincipal.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         btnRegresarMenuPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegresarMenuPrincipal.setText("SALIR");
+        btnRegresarMenuPrincipal.setText("Cancelar");
         btnRegresarMenuPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresarMenuPrincipal.setFocusable(false);
         btnRegresarMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -211,12 +217,17 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
                 btnRegresarMenuPrincipalActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegresarMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 140, 30));
+        jPanel1.add(btnRegresarMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 140, 40));
 
         id_Combo.setText("id");
-        jPanel1.add(id_Combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, -1));
+        jPanel1.add(id_Combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 420));
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("¡Qué buena elección!");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -4, -1, 60));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -279,6 +290,7 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
     private javax.swing.JButton btnIncrementar;
     private javax.swing.JButton btnRegresarMenuPrincipal;
     private javax.swing.JLabel id_Combo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCantidad;
