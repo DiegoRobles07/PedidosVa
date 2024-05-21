@@ -188,7 +188,7 @@
             <Component class="javax.swing.JLabel" name="lblNombreCombo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Trebuchet MS" size="39" style="1"/>
+                  <Font name="Trebuchet MS" size="36" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -197,7 +197,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="0" width="490" height="60"/>
+                  <AbsoluteConstraints x="0" y="0" width="500" height="60"/>
                 </Constraint>
               </Constraints>
             </Component>

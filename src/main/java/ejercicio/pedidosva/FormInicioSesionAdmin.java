@@ -1,4 +1,4 @@
-
+/*Formulario para el inicio de sesion del administrador de la empresa*/
 package ejercicio.pedidosva;
 
 import javax.swing.JOptionPane;
@@ -147,3 +147,10 @@ public class FormInicioSesionAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+/*Autor Diego Rene Robles Estrada RE100123
+PRUEBA PARCIAL 4 PROGRAMACION ORIENTADA A OBJETOS
+2024
+/*/

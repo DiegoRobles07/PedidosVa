@@ -1,4 +1,4 @@
-
+//clase para representar un objeto bebida, con sus getters y setters respectivos
 package ejercicio.pedidosva;
 
 public class Bebidas implements Combo {
@@ -42,3 +42,9 @@ public class Bebidas implements Combo {
         return id;
     }
 }
+
+
+/*Autor Diego Rene Robles Estrada RE100123
+PRUEBA PARCIAL 4 PROGRAMACION ORIENTADA A OBJETOS
+2024
+/*/

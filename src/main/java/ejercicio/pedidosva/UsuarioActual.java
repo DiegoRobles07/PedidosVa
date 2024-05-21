@@ -35,3 +35,8 @@ public class UsuarioActual {
     }
 }
 
+
+/*Autor Diego Rene Robles Estrada RE100123
+PRUEBA PARCIAL 4 PROGRAMACION ORIENTADA A OBJETOS
+2024
+/*/

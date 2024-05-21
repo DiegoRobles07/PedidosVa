@@ -1,3 +1,5 @@
+/*formulario para la confirmacion de un pedido, en el cuall se implementa la logica del total de la compra y tambien se envia un correo
+//de confirmacion*/
 package ejercicio.pedidosva;
 
 import ejercicio.pedidosva.InicioDeSesion;
@@ -24,7 +26,7 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
             direccionFormateada.append(c);
             caracteresActuales++;
 
-            // Si se alcanza el número máximo de caracteres por línea, agregar un salto de línea
+            // Si se alcanza el número máximo de caracteres por línea, agregar un salto de línea(pruebas..)
             if (caracteresActuales == caracteresPorLinea) {
                 direccionFormateada.append("\n");
                 caracteresActuales = 0; // Reiniciar contador de caracteres para la siguiente línea
@@ -66,17 +68,17 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
         int idCliente = inicioSesion.getIdUsuarioActual();
         String direccionCliente = GestorUsuarios.obtenerDireccionCliente(idCliente);
 
-// Reemplazar saltos de línea en la dirección con <br> para HTML
+        // Reemplazar saltos de línea en la dirección con <br> para HTML
         direccionCliente = direccionCliente.replaceAll("\n", "<br>");
 
-// Establecer el texto HTML en el JLabel
+        // Establecer el texto HTML en el JLabel
         lblDireccionCliente.setText("<html>" + direccionCliente + "</html>");
         
         // Obtener el teléfono del cliente
-    String telefonoCliente = GestorUsuarios.obtenerTelefonoCliente(idCliente);
+        String telefonoCliente = GestorUsuarios.obtenerTelefonoCliente(idCliente);
 
-    // Establecer el texto en el JLabel
-    lblTelefonoCliente.setText(telefonoCliente);
+        // Establecer el texto en el JLabel
+        lblTelefonoCliente.setText(telefonoCliente);
     }
 @Override
     public void onSesionIniciada(int idUsuario) {
@@ -255,7 +257,7 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
         });
         pnlFondo.add(btnLimpiarLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 540, 130, 50));
 
-        btnRealizarPedido.setBackground(new java.awt.Color(0, 0, 204));
+        btnRealizarPedido.setBackground(new java.awt.Color(0, 102, 255));
         btnRealizarPedido.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         btnRealizarPedido.setForeground(new java.awt.Color(255, 255, 255));
         btnRealizarPedido.setText("Realizar Pedido");
@@ -353,6 +355,7 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
             JOptionPane.showMessageDialog(this, "Error al realizar el pedido. Por favor, inténtalo de nuevo.");
         }
     }//GEN-LAST:event_btnRealizarPedidoActionPerformed
+    //funcion para calcular el total del pedido del cliente
     private double calcularPrecioTotal(List<Producto> productos) {
         double precioTotal = 0.0;
         for (Producto producto : productos) {
@@ -388,3 +391,10 @@ public class FormConfirmarPedido extends javax.swing.JFrame implements SessionOb
     private javax.swing.JPanel pnlFondo;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+/*Autor Diego Rene Robles Estrada RE100123
+PRUEBA PARCIAL 4 PROGRAMACION ORIENTADA A OBJETOS
+2024
+/*/

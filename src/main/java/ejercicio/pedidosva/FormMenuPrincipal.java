@@ -1,3 +1,7 @@
+/*Formulario en donde se manejara la mayoria de la logica de la app
+ACLARACION: las variables de panelesDesayunos, imagenDesayunos, lblDescipcionDesayuno, deberian de ser cambiadas por imagenCombos,
+lblDescripcionCombo, panelesCombos, etc... debido a no echar a perder todo el codigo, aun no lo he implementado, asi que la modificaion
+del nombre de estas variables tendran que ser modificadas en el futuro*/
 package ejercicio.pedidosva;
 
 import java.awt.Color;
@@ -150,21 +154,12 @@ public class FormMenuPrincipal extends javax.swing.JFrame implements SessionObse
 
     @Override
     public void onSesionCerrada() {
-        // Aquí defines lo que deseas que ocurra cuando la sesión se cierre
-        // Por ejemplo, podrías limpiar la interfaz o realizar otras acciones necesarias
-        // También puedes agregar mensajes de depuración si lo deseas
         System.out.println("Sesión cerrada. Realizando acciones necesarias...");
-
-        // Por ejemplo, podrías limpiar la interfaz o realizar otras acciones necesarias
-        // Ejemplo:
         limpiarInterfaz();
     }
 
     @Override
     public void onSesionIniciada(int idUsuario) {
-        // Aquí defines lo que deseas que ocurra cuando la sesión se inicie
-        // Por ejemplo, podrías actualizar la interfaz o realizar otras acciones necesarias
-        // También puedes agregar mensajes de depuración si lo deseas
         System.out.println("Sesión iniciada para el usuario con ID: " + idUsuario);
 
     }
@@ -303,7 +298,7 @@ public void confirmarPedido() {
         }
     }
 
-// Repite este patrón para los demás métodos actualizarPanelXxx
+// Repetir este patrón para los demás métodos actualizarPanelXxx
     public void actualizarPanelComboCarne(int index, int id, String nombre, double precio, String descripcion, String imagenRuta) {
         if (index < 0 || index >= lblImagenDesayuno.size()) {
             System.err.println("Índice de panel de combo de carne inválido: " + index);
@@ -1415,9 +1410,9 @@ public void confirmarPedido() {
     }//GEN-LAST:event_pnlCombo1MouseClicked
 
     private void lblImagenCombo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenCombo1MouseClicked
-        int index = panelesDesayuno.indexOf(pnlCombo1); // Obtén el índice del panel de desayuno seleccionado
-        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtén el JLabel oculto que contiene el ID
-        int id = Integer.parseInt(lblIdCombo.getText()); // Obtén el ID del combo de desayuno seleccionado
+        int index = panelesDesayuno.indexOf(pnlCombo1); // Obtener el índice del panel de desayuno seleccionado
+        JLabel lblIdCombo = lblIdDesayuno.get(index); // Obtener el JLabel oculto que contiene el ID
+        int id = Integer.parseInt(lblIdCombo.getText()); // Obener el ID del combo de desayuno seleccionado
 
 // Obtener datos del combo de desayuno seleccionado
         String nombre = lblNombreDesayuno.get(index).getText(); // Obtén el nombre del combo
@@ -1724,7 +1719,7 @@ public void confirmarPedido() {
     }//GEN-LAST:event_lblImagenCombo8MouseExited
 
     private void btnConfirmarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarPedidoActionPerformed
-        // Aquí debes asegurarte de tener una instancia válida de InicioDeSesion
+        // asegurarse de tener una instancia válida de InicioDeSesion
         InicioDeSesion inicioSesion = obtenerInicioDeSesion(); // Debes implementar este método
         if(inicioSesion.sesionIniciada()){
             FormConfirmarPedido confirmarPedido = new FormConfirmarPedido(carrito, this, inicioSesion);
@@ -2383,3 +2378,8 @@ public void confirmarPedido() {
     private javax.swing.JSeparator separator;
     // End of variables declaration//GEN-END:variables
 }
+
+/*Autor Diego Rene Robles Estrada RE100123
+PRUEBA PARCIAL 4 PROGRAMACION ORIENTADA A OBJETOS
+2024
+/*/

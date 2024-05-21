@@ -1,3 +1,6 @@
+//Formulario para la gestión general de la aplicacion de PedidosVa con la Franquicia fictia Freddy´s Food Service sv
+//hay algunas librerias para la generación de reportes pdf
+
 package ejercicio.pedidosva;
 
 import com.itextpdf.text.Document;
@@ -97,11 +100,10 @@ public class FormAdministrador extends javax.swing.JFrame {
             }
 
             // Asignar el modelo a la tabla
-            jTable1.setModel(model);
+            tblAdministracion.setModel(model);
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            // Aquí puedes añadir un manejo de errores más avanzado
         } finally {
             if (rs != null) {
                 try {
@@ -120,7 +122,7 @@ public class FormAdministrador extends javax.swing.JFrame {
             ConexionBD.cerrarConexion(con);
         }
     }
-
+//funcion para actualizar datos de un cliente
     private void actualizarDatosCliente(int idCliente) {
         Connection con = ConexionBD.establecerConexion();
         if (con != null) {
@@ -151,7 +153,7 @@ public class FormAdministrador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error: no se pudo establecer conexión con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+//funcion para cargar los datos de un cliente seleccionado en la tabla del panel general
     private void cargarDatosClienteSeleccionado(int idCliente) {
         Connection con = ConexionBD.establecerConexion();
         if (con != null) {
@@ -180,7 +182,7 @@ public class FormAdministrador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error: no se pudo establecer conexión con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+//funcion para cargar la data de los clientes
     private void cargarDatosClientes() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
@@ -208,7 +210,7 @@ public class FormAdministrador extends javax.swing.JFrame {
                     modelo.addRow(fila);
                 }
 
-                jTable1.setModel(modelo);
+                tblAdministracion.setModel(modelo);
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Error al cargar los datos de clientes: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             } finally {
@@ -218,7 +220,7 @@ public class FormAdministrador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error: no se pudo establecer conexión con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+//funcion para general pdf, simple pero efectivo
     private void generarReportePDF() {
         Document document = new Document();
         try {
@@ -293,7 +295,7 @@ public class FormAdministrador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al generar el reporte: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+//funcion para limpiar los text field
     private void limpiarCamposCliente() {
         txtNombreCliente.setText("");
         txtApellido.setText("");
@@ -310,7 +312,7 @@ public class FormAdministrador extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblAdministracion = new javax.swing.JTable();
         lblInfoTabla = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -353,10 +355,10 @@ public class FormAdministrador extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTable1.setBackground(new java.awt.Color(51, 51, 51));
-        jTable1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAdministracion.setBackground(new java.awt.Color(51, 51, 51));
+        tblAdministracion.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        tblAdministracion.setForeground(new java.awt.Color(255, 255, 255));
+        tblAdministracion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -367,15 +369,15 @@ public class FormAdministrador extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setOpaque(false);
-        jTable1.setSelectionBackground(new java.awt.Color(255, 0, 0));
-        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblAdministracion.setOpaque(false);
+        tblAdministracion.setSelectionBackground(new java.awt.Color(255, 0, 0));
+        tblAdministracion.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tblAdministracion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                tblAdministracionMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblAdministracion);
 
         lblInfoTabla.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblInfoTabla.setForeground(new java.awt.Color(255, 255, 255));
@@ -715,10 +717,10 @@ public class FormAdministrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        int row = jTable1.getSelectedRow();
+    private void tblAdministracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAdministracionMouseClicked
+        int row = tblAdministracion.getSelectedRow();
         if (row != -1) {
-            int idCliente = (int) jTable1.getValueAt(row, 0); // Suponiendo que la primera columna es el ID del cliente
+            int idCliente = (int) tblAdministracion.getValueAt(row, 0); // Suponiendo que la primera columna es el ID del cliente
 
             // Verificar si se están viendo clientes antes de cargar datos de cliente
             if (viendoClientes) {
@@ -726,7 +728,7 @@ public class FormAdministrador extends javax.swing.JFrame {
                 cargarDatosClienteSeleccionado(idCliente);
             }
         }
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_tblAdministracionMouseClicked
 
     private void btnActualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarClienteActionPerformed
         String correoCliente = txtEmailCliente.getText();
@@ -848,10 +850,10 @@ public class FormAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblInfoTabla;
+    private javax.swing.JTable tblAdministracion;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtContrasenaCliente;
     private javax.swing.JTextField txtDireccionCliente;
@@ -860,3 +862,9 @@ public class FormAdministrador extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
+
+
+/*Autor Diego Rene Robles Estrada RE100123
+PRUEBA PARCIAL 4 PROGRAMACION ORIENTADA A OBJETOS
+2024
+/*/

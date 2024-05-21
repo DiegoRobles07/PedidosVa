@@ -1,3 +1,4 @@
+/*formulario para la de una cuenta de un cliente*/
 package ejercicio.pedidosva;
 
 import javax.swing.JOptionPane;
@@ -26,8 +27,6 @@ public class FormCrearCuenta extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         txtApellido = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
@@ -36,6 +35,8 @@ public class FormCrearCuenta extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtContrasena = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -49,12 +50,12 @@ public class FormCrearCuenta extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 110, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 110, -1));
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellido");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 130, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 130, -1));
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -69,69 +70,45 @@ public class FormCrearCuenta extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Direccion");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 130, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 130, -1));
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Contraseña");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 130, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 130, -1));
 
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("(Recuerda ingresar los datos precisos para la entrega de tu pedido)");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(0, 102, 255));
-        jButton1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("CREAR");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 170, 60));
-
-        btnCancelar.setBackground(new java.awt.Color(255, 51, 51));
-        btnCancelar.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setText("CANCELAR");
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, 170, 60));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
         txtApellido.setBackground(new java.awt.Color(0, 0, 0));
         txtApellido.setFont(new java.awt.Font("Trebuchet MS", 1, 21)); // NOI18N
         txtApellido.setForeground(new java.awt.Color(255, 255, 255));
         txtApellido.setBorder(new javax.swing.border.MatteBorder(null));
         txtApellido.setCaretColor(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 200, 40));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 230, 40));
 
         txtDireccion.setBackground(new java.awt.Color(0, 0, 0));
         txtDireccion.setFont(new java.awt.Font("Trebuchet MS", 1, 21)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
         txtDireccion.setBorder(new javax.swing.border.MatteBorder(null));
         txtDireccion.setCaretColor(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 440, 40));
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 440, 40));
 
         txtNombre.setBackground(new java.awt.Color(0, 0, 0));
         txtNombre.setFont(new java.awt.Font("Trebuchet MS", 1, 21)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
         txtNombre.setBorder(new javax.swing.border.MatteBorder(null));
         txtNombre.setCaretColor(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 200, 40));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 230, 40));
 
         txtEmail.setBackground(new java.awt.Color(0, 0, 0));
         txtEmail.setFont(new java.awt.Font("Trebuchet MS", 1, 21)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
         txtEmail.setBorder(new javax.swing.border.MatteBorder(null));
         txtEmail.setCaretColor(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 200, 40));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 230, 40));
 
         txtTelefono.setBackground(new java.awt.Color(0, 0, 0));
         txtTelefono.setFont(new java.awt.Font("Trebuchet MS", 1, 21)); // NOI18N
@@ -143,12 +120,12 @@ public class FormCrearCuenta extends javax.swing.JFrame {
                 txtTelefonoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 200, 40));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 230, 40));
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 42)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 39)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("CREA TU CUENTA");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 360, 70));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 340, 70));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/new_User.png"))); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 80));
@@ -157,11 +134,35 @@ public class FormCrearCuenta extends javax.swing.JFrame {
         txtContrasena.setFont(new java.awt.Font("Trebuchet MS", 1, 21)); // NOI18N
         txtContrasena.setForeground(new java.awt.Color(255, 255, 255));
         txtContrasena.setCaretColor(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 200, 40));
+        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 230, 40));
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 460, 540));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 500));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 560));
+        jButton1.setBackground(new java.awt.Color(0, 102, 255));
+        jButton1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("CREAR");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 170, 60));
+
+        btnCancelar.setBackground(new java.awt.Color(255, 51, 51));
+        btnCancelar.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, 170, 60));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,3 +260,10 @@ public class FormCrearCuenta extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+/*Autor Diego Rene Robles Estrada RE100123
+PRUEBA PARCIAL 4 PROGRAMACION ORIENTADA A OBJETOS
+2024
+/*/

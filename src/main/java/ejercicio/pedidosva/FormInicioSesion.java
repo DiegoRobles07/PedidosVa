@@ -1,3 +1,4 @@
+/*Formulario para el inicio de sesion de un cliente*/
 package ejercicio.pedidosva;
 import javax.swing.JOptionPane;
 import ejercicio.pedidosva.InicioDeSesion;
@@ -107,7 +108,7 @@ public class FormInicioSesion extends javax.swing.JFrame implements SessionObser
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Olvidé mi contraseña");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 120, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 120, 20));
 
         txtCorreo.setBackground(new java.awt.Color(0, 0, 0));
         txtCorreo.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
@@ -231,3 +232,10 @@ public class FormInicioSesion extends javax.swing.JFrame implements SessionObser
     private javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+/*Autor Diego Rene Robles Estrada RE100123
+PRUEBA PARCIAL 4 PROGRAMACION ORIENTADA A OBJETOS
+2024
+/*/

@@ -1,3 +1,4 @@
+//clase para representar un objeto Carrito, con sus getters y setters respectivos y funciones para eliminar o agregar al carrito, entre otras
 package ejercicio.pedidosva;
 
 import java.util.ArrayList;
@@ -46,3 +47,9 @@ public class Carrito {
     }
 
 }
+
+
+/*Autor Diego Rene Robles Estrada RE100123
+PRUEBA PARCIAL 4 PROGRAMACION ORIENTADA A OBJETOS
+2024
+/*/

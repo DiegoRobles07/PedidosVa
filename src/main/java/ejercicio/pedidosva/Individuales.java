@@ -42,3 +42,8 @@ public class Individuales implements Combo{
         return id;
     }
 }
+
+/*Autor Diego Rene Robles Estrada RE100123
+PRUEBA PARCIAL 4 PROGRAMACION ORIENTADA A OBJETOS
+2024
+/*/

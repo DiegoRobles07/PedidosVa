@@ -1,5 +1,5 @@
+//clase para representar un objeto ComboCarne, con sus getters y setters respectivos
 package ejercicio.pedidosva;
-
 
 public class CombosCarne implements Combo {
     private int id;
@@ -43,3 +43,9 @@ public class CombosCarne implements Combo {
         return id;
     }
 }
+
+
+/*Autor Diego Rene Robles Estrada RE100123
+PRUEBA PARCIAL 4 PROGRAMACION ORIENTADA A OBJETOS
+2024
+/*/
