@@ -36,7 +36,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="180" width="1240" height="530"/>
+          <AbsoluteConstraints x="20" y="180" width="1250" height="530"/>
         </Constraint>
       </Constraints>
 
@@ -80,7 +80,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="211" y="0" width="60" height="-1"/>
+                  <AbsoluteConstraints x="210" y="0" width="60" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -96,7 +96,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="190" y="0" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="190" y="0" width="50" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -111,9 +111,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblImagenCombo1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel3"/>
-              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo1MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo1MouseEntered"/>
@@ -211,6 +208,8 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo5MouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo5MouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo5MouseExited"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -265,7 +264,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="190" y="0" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="194" y="0" width="30" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -281,7 +280,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="211" y="0" width="60" height="-1"/>
+                  <AbsoluteConstraints x="210" y="0" width="60" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -296,9 +295,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblImagenCombo5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel3"/>
-              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo5MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo5MouseEntered"/>
@@ -328,7 +324,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="330" y="10" width="270" height="240"/>
+              <AbsoluteConstraints x="340" y="10" width="270" height="240"/>
             </Constraint>
           </Constraints>
 
@@ -348,7 +344,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="211" y="0" width="60" height="-1"/>
+                  <AbsoluteConstraints x="210" y="0" width="60" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -364,7 +360,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="190" y="0" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="190" y="0" width="30" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -379,9 +375,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblImagenCombo2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel3"/>
-              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo2MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo2MouseEntered"/>
@@ -426,7 +419,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="10" y="10" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="10" y="10" width="240" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -463,7 +456,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="330" y="280" width="270" height="240"/>
+              <AbsoluteConstraints x="340" y="280" width="270" height="240"/>
             </Constraint>
           </Constraints>
 
@@ -483,7 +476,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="211" y="0" width="60" height="-1"/>
+                  <AbsoluteConstraints x="210" y="0" width="60" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -499,7 +492,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="190" y="0" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="190" y="0" width="30" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -514,9 +507,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblImagenCombo6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel3"/>
-              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo6MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo6MouseEntered"/>
@@ -536,6 +526,8 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo6MouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo6MouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo6MouseExited"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -559,7 +551,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="10" y="10" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="10" y="10" width="240" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -596,7 +588,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="950" y="10" width="270" height="240"/>
+              <AbsoluteConstraints x="960" y="10" width="270" height="240"/>
             </Constraint>
           </Constraints>
 
@@ -616,7 +608,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="211" y="0" width="60" height="-1"/>
+                  <AbsoluteConstraints x="210" y="0" width="60" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -632,7 +624,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="190" y="0" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="194" y="0" width="30" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -647,9 +639,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblImagenCombo4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel3"/>
-              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo4MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo4MouseEntered"/>
@@ -669,6 +658,8 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo4MouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo4MouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo4MouseExited"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -692,7 +683,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="10" y="10" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="10" y="10" width="260" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -729,7 +720,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="950" y="280" width="270" height="240"/>
+              <AbsoluteConstraints x="960" y="280" width="270" height="240"/>
             </Constraint>
           </Constraints>
 
@@ -749,7 +740,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="180" y="0" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="194" y="0" width="30" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -765,7 +756,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="201" y="0" width="80" height="-1"/>
+                  <AbsoluteConstraints x="210" y="0" width="70" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -780,9 +771,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblImagenCombo8">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel3"/>
-              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo8MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo8MouseEntered"/>
@@ -802,6 +790,8 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo8MouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo8MouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo8MouseExited"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -862,7 +852,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="640" y="10" width="270" height="240"/>
+              <AbsoluteConstraints x="650" y="10" width="270" height="240"/>
             </Constraint>
           </Constraints>
 
@@ -882,7 +872,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="211" y="0" width="60" height="-1"/>
+                  <AbsoluteConstraints x="210" y="0" width="60" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -908,14 +898,11 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="190" y="0" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="194" y="0" width="30" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblImagenCombo3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel3"/>
-              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo3MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo3MouseEntered"/>
@@ -936,6 +923,7 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo3MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo3MouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo3MouseExited"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -959,7 +947,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="10" y="10" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="10" y="10" width="260" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -996,7 +984,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="640" y="280" width="270" height="240"/>
+              <AbsoluteConstraints x="650" y="280" width="270" height="240"/>
             </Constraint>
           </Constraints>
 
@@ -1016,7 +1004,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="211" y="0" width="60" height="-1"/>
+                  <AbsoluteConstraints x="210" y="0" width="60" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1032,7 +1020,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="190" y="0" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="194" y="0" width="30" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1047,9 +1035,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblImagenCombo7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel3"/>
-              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo7MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImagenCombo7MouseEntered"/>
@@ -1069,6 +1054,8 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo7MouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo7MouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlInfoCombo7MouseExited"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1092,7 +1079,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="10" y="0" width="270" height="40"/>
+                      <AbsoluteConstraints x="10" y="10" width="260" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1149,7 +1136,7 @@
         <Component class="javax.swing.JButton" name="btnComboPollo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="ff" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="20" style="1"/>
@@ -1175,7 +1162,7 @@
         <Component class="javax.swing.JButton" name="btnDesayunos">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="ff" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="20" style="1"/>
@@ -1201,7 +1188,7 @@
         <Component class="javax.swing.JButton" name="btnEnsaladas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="ff" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="20" style="1"/>
@@ -1227,7 +1214,7 @@
         <Component class="javax.swing.JButton" name="btnComboCarne">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="ff" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="20" style="1"/>
@@ -1282,7 +1269,7 @@
         <Component class="javax.swing.JButton" name="btnBebidas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="ff" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="20" style="1"/>
@@ -1308,7 +1295,7 @@
         <Component class="javax.swing.JButton" name="btnIndividuales">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="ff" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="20" style="1"/>
@@ -1334,7 +1321,7 @@
         <Component class="javax.swing.JButton" name="btnPostres1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="ff" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="20" style="1"/>
@@ -1360,13 +1347,13 @@
         <Component class="javax.swing.JButton" name="btnInicioSesion">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="66" red="33" type="rgb"/>
+              <Color blue="33" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Iniciar Sesi&#xf3;n"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

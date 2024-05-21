@@ -573,17 +573,16 @@ public void confirmarPedido() {
         lblPrecioCombo1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblPrecioCombo1.setForeground(new java.awt.Color(255, 51, 51));
         lblPrecioCombo1.setText("Precio");
-        pnlCombo1.add(lblPrecioCombo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 0, 60, -1));
+        pnlCombo1.add(lblPrecioCombo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
         jLabel5.setText("$");
-        pnlCombo1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+        pnlCombo1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 50, -1));
 
         lbl_IdCombo1.setText("id");
         pnlCombo1.add(lbl_IdCombo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lblImagenCombo1.setText("jLabel3");
         lblImagenCombo1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblImagenCombo1MouseClicked(evt);
@@ -644,6 +643,12 @@ public void confirmarPedido() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlInfoCombo5MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo5MouseExited(evt);
+            }
         });
         pnlInfoCombo5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -661,17 +666,16 @@ public void confirmarPedido() {
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 51, 51));
         jLabel9.setText("$");
-        pnlCombo5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+        pnlCombo5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 0, 30, -1));
 
         lblPrecioCombo5.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblPrecioCombo5.setForeground(new java.awt.Color(255, 51, 51));
         lblPrecioCombo5.setText("Precio");
-        pnlCombo5.add(lblPrecioCombo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 0, 60, -1));
+        pnlCombo5.add(lblPrecioCombo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 60, -1));
 
         lbl_IdCombo5.setText("id");
         pnlCombo5.add(lbl_IdCombo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lblImagenCombo5.setText("jLabel3");
         lblImagenCombo5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblImagenCombo5MouseClicked(evt);
@@ -705,17 +709,16 @@ public void confirmarPedido() {
         lblPrecioCombo2.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblPrecioCombo2.setForeground(new java.awt.Color(255, 51, 51));
         lblPrecioCombo2.setText("Precio");
-        pnlCombo2.add(lblPrecioCombo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 0, 60, -1));
+        pnlCombo2.add(lblPrecioCombo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 60, -1));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setText("$");
-        pnlCombo2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+        pnlCombo2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 30, -1));
 
         lbl_IdCombo2.setText("id");
         pnlCombo2.add(lbl_IdCombo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lblImagenCombo2.setText("jLabel3");
         lblImagenCombo2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblImagenCombo2MouseClicked(evt);
@@ -746,7 +749,7 @@ public void confirmarPedido() {
         lblNombreCombo2.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         lblNombreCombo2.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreCombo2.setText("Nombre de combo");
-        pnlInfoCombo2.add(lblNombreCombo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        pnlInfoCombo2.add(lblNombreCombo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, -1));
 
         lblDescripcionCombo2.setForeground(new java.awt.Color(255, 255, 255));
         lblDescripcionCombo2.setText("descr");
@@ -754,7 +757,7 @@ public void confirmarPedido() {
 
         pnlCombo2.add(pnlInfoCombo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 250, 80));
 
-        panelCombos.add(pnlCombo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 270, 240));
+        panelCombos.add(pnlCombo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 270, 240));
 
         pnlCombo6.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -774,17 +777,16 @@ public void confirmarPedido() {
         lblPrecioCombo6.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblPrecioCombo6.setForeground(new java.awt.Color(255, 51, 51));
         lblPrecioCombo6.setText("Precio");
-        pnlCombo6.add(lblPrecioCombo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 0, 60, -1));
+        pnlCombo6.add(lblPrecioCombo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 60, -1));
 
         jLabel10.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 51, 51));
         jLabel10.setText("$");
-        pnlCombo6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+        pnlCombo6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 30, -1));
 
         lbl_IdCombo6.setText("jLabel12");
         pnlCombo6.add(lbl_IdCombo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lblImagenCombo6.setText("jLabel3");
         lblImagenCombo6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblImagenCombo6MouseClicked(evt);
@@ -803,13 +805,19 @@ public void confirmarPedido() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlInfoCombo6MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo6MouseExited(evt);
+            }
         });
         pnlInfoCombo6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombreCombo6.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         lblNombreCombo6.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreCombo6.setText("Nombre de combo");
-        pnlInfoCombo6.add(lblNombreCombo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        pnlInfoCombo6.add(lblNombreCombo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, -1));
 
         lblDescripcionCombo6.setForeground(new java.awt.Color(255, 255, 255));
         lblDescripcionCombo6.setText("descripicon");
@@ -817,7 +825,7 @@ public void confirmarPedido() {
 
         pnlCombo6.add(pnlInfoCombo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 250, 80));
 
-        panelCombos.add(pnlCombo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 270, 240));
+        panelCombos.add(pnlCombo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 270, 240));
 
         pnlCombo4.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -837,17 +845,16 @@ public void confirmarPedido() {
         lblPrecioCombo4.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblPrecioCombo4.setForeground(new java.awt.Color(255, 51, 51));
         lblPrecioCombo4.setText("Precio");
-        pnlCombo4.add(lblPrecioCombo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 0, 60, -1));
+        pnlCombo4.add(lblPrecioCombo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 60, -1));
 
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 51, 51));
         jLabel8.setText("$");
-        pnlCombo4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+        pnlCombo4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 0, 30, -1));
 
         lbl_IdCombo4.setText("id");
         pnlCombo4.add(lbl_IdCombo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lblImagenCombo4.setText("jLabel3");
         lblImagenCombo4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblImagenCombo4MouseClicked(evt);
@@ -866,13 +873,19 @@ public void confirmarPedido() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlInfoCombo4MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo4MouseExited(evt);
+            }
         });
         pnlInfoCombo4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombreCombo4.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         lblNombreCombo4.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreCombo4.setText("Nombre de combo");
-        pnlInfoCombo4.add(lblNombreCombo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        pnlInfoCombo4.add(lblNombreCombo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, -1));
 
         lblDescripcionCombo4.setForeground(new java.awt.Color(255, 255, 255));
         lblDescripcionCombo4.setText("descripcion");
@@ -880,7 +893,7 @@ public void confirmarPedido() {
 
         pnlCombo4.add(pnlInfoCombo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 250, 80));
 
-        panelCombos.add(pnlCombo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, 270, 240));
+        panelCombos.add(pnlCombo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, 270, 240));
 
         pnlCombo8.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -900,17 +913,16 @@ public void confirmarPedido() {
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 51, 51));
         jLabel3.setText("$");
-        pnlCombo8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, -1, -1));
+        pnlCombo8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 0, 30, -1));
 
         lblPrecioCombo8.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblPrecioCombo8.setForeground(new java.awt.Color(255, 51, 51));
         lblPrecioCombo8.setText("Precio");
-        pnlCombo8.add(lblPrecioCombo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 0, 80, -1));
+        pnlCombo8.add(lblPrecioCombo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 70, -1));
 
         lbl_IdCombo8.setText("id");
         pnlCombo8.add(lbl_IdCombo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lblImagenCombo8.setText("jLabel3");
         lblImagenCombo8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblImagenCombo8MouseClicked(evt);
@@ -929,6 +941,12 @@ public void confirmarPedido() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlInfoCombo8MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo8MouseExited(evt);
+            }
         });
         pnlInfoCombo8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -943,7 +961,7 @@ public void confirmarPedido() {
 
         pnlCombo8.add(pnlInfoCombo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 250, 80));
 
-        panelCombos.add(pnlCombo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 280, 270, 240));
+        panelCombos.add(pnlCombo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 280, 270, 240));
 
         pnlCombo3.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -963,7 +981,7 @@ public void confirmarPedido() {
         lblPrecioCombo3.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblPrecioCombo3.setForeground(new java.awt.Color(255, 51, 51));
         lblPrecioCombo3.setText("Precio");
-        pnlCombo3.add(lblPrecioCombo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 0, 60, -1));
+        pnlCombo3.add(lblPrecioCombo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 60, -1));
 
         lbl_IdCombo3.setText("jLabel2");
         pnlCombo3.add(lbl_IdCombo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -971,9 +989,8 @@ public void confirmarPedido() {
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 51, 51));
         jLabel7.setText("$");
-        pnlCombo3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+        pnlCombo3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 0, 30, -1));
 
-        lblImagenCombo3.setText("jLabel3");
         lblImagenCombo3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblImagenCombo3MouseClicked(evt);
@@ -995,13 +1012,16 @@ public void confirmarPedido() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlInfoCombo3MouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo3MouseExited(evt);
+            }
         });
         pnlInfoCombo3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombreCombo3.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         lblNombreCombo3.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreCombo3.setText("Nombre de combo");
-        pnlInfoCombo3.add(lblNombreCombo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        pnlInfoCombo3.add(lblNombreCombo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, -1));
 
         lblDescripcionCombo3.setForeground(new java.awt.Color(255, 255, 255));
         lblDescripcionCombo3.setText("descrip");
@@ -1009,7 +1029,7 @@ public void confirmarPedido() {
 
         pnlCombo3.add(pnlInfoCombo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 250, 80));
 
-        panelCombos.add(pnlCombo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 270, 240));
+        panelCombos.add(pnlCombo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 270, 240));
 
         pnlCombo7.setBackground(new java.awt.Color(255, 255, 255));
         pnlCombo7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1029,17 +1049,16 @@ public void confirmarPedido() {
         lblPrecioCombo7.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblPrecioCombo7.setForeground(new java.awt.Color(255, 51, 51));
         lblPrecioCombo7.setText("Precio");
-        pnlCombo7.add(lblPrecioCombo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 0, 60, -1));
+        pnlCombo7.add(lblPrecioCombo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 60, -1));
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 51, 51));
         jLabel11.setText("$");
-        pnlCombo7.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+        pnlCombo7.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 0, 30, -1));
 
         lbl_IdCombo7.setText("id");
         pnlCombo7.add(lbl_IdCombo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lblImagenCombo7.setText("jLabel3");
         lblImagenCombo7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblImagenCombo7MouseClicked(evt);
@@ -1058,13 +1077,19 @@ public void confirmarPedido() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlInfoCombo7MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlInfoCombo7MouseExited(evt);
+            }
         });
         pnlInfoCombo7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombreCombo7.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         lblNombreCombo7.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreCombo7.setText("Nombre de combo");
-        pnlInfoCombo7.add(lblNombreCombo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 270, 40));
+        pnlInfoCombo7.add(lblNombreCombo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 20));
 
         lblDescripcionCombo7.setForeground(new java.awt.Color(255, 255, 255));
         lblDescripcionCombo7.setText("descripcion");
@@ -1072,10 +1097,10 @@ public void confirmarPedido() {
 
         pnlCombo7.add(pnlInfoCombo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 250, 80));
 
-        panelCombos.add(pnlCombo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 270, 240));
+        panelCombos.add(pnlCombo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 270, 240));
 
         getContentPane().add(panelCombos);
-        panelCombos.setBounds(20, 180, 1240, 530);
+        panelCombos.setBounds(20, 180, 1250, 530);
 
         panelFondo.setBackground(new java.awt.Color(204, 51, 0));
         panelFondo.setForeground(new java.awt.Color(0, 0, 0));
@@ -1084,7 +1109,7 @@ public void confirmarPedido() {
         separator.setBackground(new java.awt.Color(0, 0, 0));
         panelFondo.add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1290, 10));
 
-        btnComboPollo.setBackground(new java.awt.Color(0, 0, 153));
+        btnComboPollo.setBackground(new java.awt.Color(0, 102, 255));
         btnComboPollo.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         btnComboPollo.setForeground(new java.awt.Color(255, 255, 255));
         btnComboPollo.setText("Combos Pollo");
@@ -1097,7 +1122,7 @@ public void confirmarPedido() {
         });
         panelFondo.add(btnComboPollo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 160, 60));
 
-        btnDesayunos.setBackground(new java.awt.Color(0, 0, 153));
+        btnDesayunos.setBackground(new java.awt.Color(0, 102, 255));
         btnDesayunos.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         btnDesayunos.setForeground(new java.awt.Color(255, 255, 255));
         btnDesayunos.setText("Desayunos");
@@ -1110,7 +1135,7 @@ public void confirmarPedido() {
         });
         panelFondo.add(btnDesayunos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 60));
 
-        btnEnsaladas.setBackground(new java.awt.Color(0, 0, 153));
+        btnEnsaladas.setBackground(new java.awt.Color(0, 102, 255));
         btnEnsaladas.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         btnEnsaladas.setForeground(new java.awt.Color(255, 255, 255));
         btnEnsaladas.setText("Ensaladas");
@@ -1123,7 +1148,7 @@ public void confirmarPedido() {
         });
         panelFondo.add(btnEnsaladas, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 160, 60));
 
-        btnComboCarne.setBackground(new java.awt.Color(0, 0, 153));
+        btnComboCarne.setBackground(new java.awt.Color(0, 102, 255));
         btnComboCarne.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         btnComboCarne.setForeground(new java.awt.Color(255, 255, 255));
         btnComboCarne.setText("Combos Carne");
@@ -1150,7 +1175,7 @@ public void confirmarPedido() {
         });
         panelFondo.add(btnConfirmarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 20, 230, 60));
 
-        btnBebidas.setBackground(new java.awt.Color(0, 0, 153));
+        btnBebidas.setBackground(new java.awt.Color(0, 102, 255));
         btnBebidas.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         btnBebidas.setForeground(new java.awt.Color(255, 255, 255));
         btnBebidas.setText("Bebidas");
@@ -1163,7 +1188,7 @@ public void confirmarPedido() {
         });
         panelFondo.add(btnBebidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 110, 160, 60));
 
-        btnIndividuales.setBackground(new java.awt.Color(0, 0, 153));
+        btnIndividuales.setBackground(new java.awt.Color(0, 102, 255));
         btnIndividuales.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         btnIndividuales.setForeground(new java.awt.Color(255, 255, 255));
         btnIndividuales.setText("Individuales");
@@ -1176,7 +1201,7 @@ public void confirmarPedido() {
         });
         panelFondo.add(btnIndividuales, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 110, 160, 60));
 
-        btnPostres1.setBackground(new java.awt.Color(0, 0, 153));
+        btnPostres1.setBackground(new java.awt.Color(0, 102, 255));
         btnPostres1.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         btnPostres1.setForeground(new java.awt.Color(255, 255, 255));
         btnPostres1.setText("Postres");
@@ -1189,9 +1214,9 @@ public void confirmarPedido() {
         });
         panelFondo.add(btnPostres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 110, 150, 60));
 
-        btnInicioSesion.setBackground(new java.awt.Color(51, 102, 255));
+        btnInicioSesion.setBackground(new java.awt.Color(255, 255, 51));
         btnInicioSesion.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        btnInicioSesion.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicioSesion.setForeground(new java.awt.Color(0, 0, 0));
         btnInicioSesion.setText("Iniciar Sesión");
         btnInicioSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInicioSesion.setFocusable(false);
@@ -1346,6 +1371,7 @@ public void confirmarPedido() {
 
     private void lblSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseClicked
         this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_lblSalirMouseClicked
 
     private void btnBebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBebidasActionPerformed
@@ -2199,6 +2225,50 @@ public void confirmarPedido() {
         abrirFormularioAgregarAlCarrito(id, nombre, precio, descripcion, imagen, categoriaSeleccionada);
         this.setEnabled(false);
     }//GEN-LAST:event_pnlCombo8MouseClicked
+
+    private void pnlInfoCombo3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo3MouseExited
+       pnlComboMouseExited(evt, pnlCombo3, pnlInfoCombo3);
+    }//GEN-LAST:event_pnlInfoCombo3MouseExited
+
+    private void pnlInfoCombo4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo4MouseExited
+       pnlComboMouseExited(evt, pnlCombo4, pnlInfoCombo4);
+    }//GEN-LAST:event_pnlInfoCombo4MouseExited
+
+    private void pnlInfoCombo5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo5MouseExited
+        pnlComboMouseExited(evt, pnlCombo5, pnlInfoCombo5);
+    }//GEN-LAST:event_pnlInfoCombo5MouseExited
+
+    private void pnlInfoCombo6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo6MouseExited
+        pnlComboMouseExited(evt, pnlCombo6, pnlInfoCombo6);
+    }//GEN-LAST:event_pnlInfoCombo6MouseExited
+
+    private void pnlInfoCombo7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo7MouseExited
+       pnlComboMouseExited(evt, pnlCombo7, pnlInfoCombo7);
+    }//GEN-LAST:event_pnlInfoCombo7MouseExited
+
+    private void pnlInfoCombo8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo8MouseExited
+        pnlComboMouseExited(evt, pnlCombo8, pnlInfoCombo8);
+    }//GEN-LAST:event_pnlInfoCombo8MouseExited
+
+    private void pnlInfoCombo4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo4MouseEntered
+        pnlComboMouseEntered(evt, pnlCombo4, pnlInfoCombo4);
+    }//GEN-LAST:event_pnlInfoCombo4MouseEntered
+
+    private void pnlInfoCombo5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo5MouseEntered
+        pnlComboMouseEntered(evt, pnlCombo5, pnlInfoCombo5);
+    }//GEN-LAST:event_pnlInfoCombo5MouseEntered
+
+    private void pnlInfoCombo6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo6MouseEntered
+        pnlComboMouseEntered(evt, pnlCombo6, pnlInfoCombo6);
+    }//GEN-LAST:event_pnlInfoCombo6MouseEntered
+
+    private void pnlInfoCombo7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo7MouseEntered
+       pnlComboMouseEntered(evt, pnlCombo7, pnlInfoCombo7);
+    }//GEN-LAST:event_pnlInfoCombo7MouseEntered
+
+    private void pnlInfoCombo8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInfoCombo8MouseEntered
+        pnlComboMouseEntered(evt, pnlCombo8, pnlInfoCombo8);
+    }//GEN-LAST:event_pnlInfoCombo8MouseEntered
     public static void main(String args[]) {
         // Crear una instancia de la clase Carrito
         Carrito carrito = new Carrito();

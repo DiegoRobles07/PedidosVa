@@ -142,7 +142,7 @@ public class FormAgregarAlCarrito extends javax.swing.JFrame {
         lblDescripcionCombo.setForeground(new java.awt.Color(0, 0, 0));
         lblDescripcionCombo.setText("Aqui se vera la descripción");
         lblDescripcionCombo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel2.add(lblDescripcionCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 210, 40));
+        jPanel2.add(lblDescripcionCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 230, 40));
 
         lblImagenCombo.setForeground(new java.awt.Color(0, 0, 0));
         lblImagenCombo.setText("imagen Combo");

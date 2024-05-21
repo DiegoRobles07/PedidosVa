@@ -6,10 +6,12 @@ ejercicio\pedidosva\FormMenuPrincipal$22.class
 ejercicio\pedidosva\InicioDeSesion.class
 ejercicio\pedidosva\FormMenuPrincipal$32.class
 ejercicio\pedidosva\GestorCorreo.class
+ejercicio\pedidosva\FormAdministrador$8.class
 ejercicio\pedidosva\FormConfirmarPedido$1.class
 ejercicio\pedidosva\GestorPedidos.class
 ejercicio\pedidosva\FormAdministrador$5.class
 ejercicio\pedidosva\FormMenuPrincipal$28.class
+ejercicio\pedidosva\FormAdministrador$14.class
 ejercicio\pedidosva\FormMenuPrincipal$5.class
 ejercicio\pedidosva\FormMenuPrincipal$18.class
 ejercicio\pedidosva\UsuarioActual.class
@@ -17,11 +19,13 @@ ejercicio\pedidosva\Ensaladas.class
 ejercicio\pedidosva\FormMenuPrincipal$8.class
 ejercicio\pedidosva\FormMenuPrincipal$15.class
 ejercicio\pedidosva\FormMenuPrincipal$25.class
+ejercicio\pedidosva\FormAdministrador$11.class
 ejercicio\pedidosva\FormMenuPrincipal.class
 ejercicio\pedidosva\GestorCorreo$1.class
 ejercicio\pedidosva\Individuales.class
 ejercicio\pedidosva\Postres.class
 ejercicio\pedidosva\FormAdministrador.class
+ejercicio\pedidosva\FormCrearCuenta$3.class
 ejercicio\pedidosva\FormConfirmarPedido.class
 ejercicio\pedidosva\Desayunos.class
 ejercicio\pedidosva\FormInicioSesion$3.class
@@ -30,7 +34,7 @@ ejercicio\pedidosva\FormMenuPrincipal$7.class
 ejercicio\pedidosva\FormAdministrador$3.class
 ejercicio\pedidosva\Pedido.class
 ejercicio\pedidosva\FormConfirmarPedido$3.class
-ejercicio\pedidosva\FormInicioSesion$4.class
+ejercicio\pedidosva\FormAdministrador$12.class
 ejercicio\pedidosva\FormMenuPrincipal$17.class
 ejercicio\pedidosva\FormMenuPrincipal$23.class
 ejercicio\pedidosva\GestorCombos.class
@@ -43,6 +47,7 @@ ejercicio\pedidosva\ConexionBD.class
 ejercicio\pedidosva\FormInicioSesionAdmin.class
 ejercicio\pedidosva\FormAdministrador$2.class
 ejercicio\pedidosva\FormMenuPrincipal$11.class
+ejercicio\pedidosva\FormAdministrador$9.class
 ejercicio\pedidosva\CombosCarne.class
 ejercicio\pedidosva\FormMenuPrincipal$6.class
 ejercicio\pedidosva\FormConfirmarPedido$2.class
@@ -61,7 +66,9 @@ ejercicio\pedidosva\FormMenuPrincipal$36.class
 ejercicio\pedidosva\FormMenuPrincipal$21.class
 ejercicio\pedidosva\FormAdministrador$4.class
 ejercicio\pedidosva\Bebidas.class
+ejercicio\pedidosva\FormAdministrador$13.class
 ejercicio\pedidosva\FormAgregarAlCarrito$1.class
+ejercicio\pedidosva\FormAdministrador$10.class
 ejercicio\pedidosva\SessionObserver.class
 ejercicio\pedidosva\FormAdministrador$1.class
 ejercicio\pedidosva\FormMenuPrincipal$24.class
@@ -73,6 +80,7 @@ ejercicio\pedidosva\FormCrearCuenta.class
 ejercicio\pedidosva\FormInicioSesion$1.class
 ejercicio\pedidosva\FormMenuPrincipal$13.class
 ejercicio\pedidosva\FormMenuPrincipal$3.class
+ejercicio\pedidosva\FormAdministrador$7.class
 ejercicio\pedidosva\FormMenuPrincipal$20.class
 ejercicio\pedidosva\FormMenuPrincipal$30.class
 ejercicio\pedidosva\FormMenuPrincipal$26.class
@@ -82,3 +90,4 @@ ejercicio\pedidosva\FormMenuPrincipal$31.class
 ejercicio\pedidosva\FormMenuPrincipal$9.class
 ejercicio\pedidosva\FormMenuPrincipal$14.class
 ejercicio\pedidosva\FormInicioSesionAdmin$1.class
+ejercicio\pedidosva\FormAdministrador$6.class

@@ -47,21 +47,21 @@ public class FormInicioSesion extends javax.swing.JFrame implements SessionObser
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        txtCorreo = new javax.swing.JTextPane();
         jLabel9 = new javax.swing.JLabel();
         btnIniciarSesion = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         txtContrasena = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         lblCrearCuenta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 51, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setBackground(new java.awt.Color(255, 0, 0));
         jButton2.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Cancelar");
@@ -73,30 +73,23 @@ public class FormInicioSesion extends javax.swing.JFrame implements SessionObser
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 449, 110, 40));
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Inicio de sesión");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 60));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, 50));
 
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("E-mail:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 170, -1));
-
-        txtCorreo.setBackground(new java.awt.Color(102, 102, 102));
-        txtCorreo.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
-        txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane6.setViewportView(txtCorreo);
-
-        jPanel3.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 340, 40));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 170, -1));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Contraseña:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 190, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 190, -1));
 
         btnIniciarSesion.setBackground(new java.awt.Color(51, 153, 255));
         btnIniciarSesion.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -108,33 +101,40 @@ public class FormInicioSesion extends javax.swing.JFrame implements SessionObser
                 btnIniciarSesionActionPerformed(evt);
             }
         });
-        jPanel3.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 200, 50));
+        jPanel3.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 200, 60));
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Olvidé mi contraseña");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 120, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 120, -1));
 
-        txtContrasena.setBackground(new java.awt.Color(102, 102, 102));
-        txtContrasena.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
-        txtContrasena.setForeground(new java.awt.Color(0, 0, 0));
-        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContrasenaActionPerformed(evt);
-            }
-        });
-        jPanel3.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 340, 40));
+        txtCorreo.setBackground(new java.awt.Color(0, 0, 0));
+        txtCorreo.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        txtCorreo.setCaretColor(new java.awt.Color(255, 255, 255));
+        jPanel3.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 350, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 90, -1));
+
+        txtContrasena.setBackground(new java.awt.Color(0, 0, 0));
+        txtContrasena.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        txtContrasena.setForeground(new java.awt.Color(255, 255, 255));
+        txtContrasena.setCaretColor(new java.awt.Color(255, 255, 255));
+        jPanel3.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 350, 50));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 390, 420));
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("¿No tienes cuenta?");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 130, -1));
 
+        lblCrearCuenta.setBackground(new java.awt.Color(255, 255, 255));
         lblCrearCuenta.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblCrearCuenta.setForeground(new java.awt.Color(255, 255, 255));
+        lblCrearCuenta.setForeground(new java.awt.Color(255, 255, 51));
         lblCrearCuenta.setText("Crea una aquí");
         lblCrearCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblCrearCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -142,7 +142,7 @@ public class FormInicioSesion extends javax.swing.JFrame implements SessionObser
                 lblCrearCuentaMouseClicked(evt);
             }
         });
-        jPanel1.add(lblCrearCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 470, -1, -1));
+        jPanel1.add(lblCrearCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,24 +214,20 @@ public class FormInicioSesion extends javax.swing.JFrame implements SessionObser
         this.dispose();
     }//GEN-LAST:event_lblCrearCuentaMouseClicked
 
-    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContrasenaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel lblCrearCuenta;
     private javax.swing.JPasswordField txtContrasena;
-    private javax.swing.JTextPane txtCorreo;
+    private javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
 }
